@@ -6,6 +6,7 @@ This package is part of [mobiCMS](https://github.com/mobicms) Content Management
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mobicms/mobicms)](https://github.com/mobicms/mobicms/releases)
 [![Packagist](https://img.shields.io/packagist/dt/mobicms/mobicms)](https://packagist.org/packages/mobicms/mobicms)
 
+[![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions?query=workflow%3AAnalysis)
 [![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
 
