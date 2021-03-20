@@ -33,8 +33,12 @@ class ContainerFactory
 
     private static function buildContainer(array $config): ServiceManager
     {
+        /** @var array<array-key, string> $dbConfig */
+        $dbConfig = $config['database'] ?? [];
+
+        /** @var array<array-key, array<array-key, mixed>> $dependencies */
         $dependencies = $config['dependencies'];
-        $dependencies['services']['database'] = $config['database'] ?? [];
+        $dependencies['services']['database'] = $dbConfig;
         unset($config['dependencies'], $config['database']);
         $dependencies['services']['config'] = $config;
 

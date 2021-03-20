@@ -23,13 +23,18 @@ class RendererFactory
 {
     public function __invoke(ContainerInterface $container): Renderer
     {
-        $config = $container->get('config');
-        $config = $config['templates'] ?? [];
-
-        // Create the engine instance:
         $engine = new Engine();
-        $engine->registerFunction('url', $container->get(UrlHelper::class));
-        $engine->registerFunction('serverurl', $container->get(ServerUrlHelper::class));
+
+        /** @var UrlHelper $urlHelper */
+        $urlHelper = $container->get(UrlHelper::class);
+        $engine->registerFunction('url', $urlHelper);
+
+        /** @var ServerUrlHelper $serverUrlHelper */
+        $serverUrlHelper = $container->get(ServerUrlHelper::class);
+        $engine->registerFunction('serverurl', $serverUrlHelper);
+
+        /** @var array<array-key, mixed> $config */
+        $config = $container->get('config')['templates'] ?? [];
         $this->addTemplatePath($engine, $config);
 
         // Inject engine
@@ -38,6 +43,7 @@ class RendererFactory
 
     private function addTemplatePath(Engine $engine, array $config): void
     {
+        /** @var array<string, string> $allPaths */
         $allPaths = isset($config['paths']) && is_array($config['paths']) ? $config['paths'] : [];
 
         foreach ($allPaths as $namespace => $path) {
