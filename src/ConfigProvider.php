@@ -44,7 +44,7 @@ class ConfigProvider
     {
         return [
             'aliases' => [
-                TemplateRendererInterface::class   => Renderer::class,
+                TemplateRendererInterface::class => Renderer::class,
             ],
 
             'delegators' => [
@@ -54,7 +54,7 @@ class ConfigProvider
             ],
 
             'factories' => [
-                Renderer::class                        => RendererFactory::class,
+                Renderer::class => RendererFactory::class,
             ],
         ];
     }
@@ -62,7 +62,7 @@ class ConfigProvider
     private function getTemplates(): array
     {
         return [
-            'paths'     => [
+            'paths' => [
                 'error'  => __DIR__ . '/../templates/error',
                 'layout' => __DIR__ . '/../templates/layout',
             ],
