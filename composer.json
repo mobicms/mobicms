@@ -43,13 +43,23 @@
         "mobicms/render": "^2.0"
     },
     "require-dev": {
+        "psalm/plugin-phpunit": "^0.15.1",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^6.4",
-        "squizlabs/php_codesniffer": "^3.5"
+        "squizlabs/php_codesniffer": "^3.5",
+        "vimeo/psalm": "^4.6"
     },
     "autoload": {
         "psr-4": {
             "Mobicms\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "files": [
+            "tests/resources/stubs/constants.php"
+        ],
+        "psr-4": {
+            "MobicmsTest\\": "tests/unit/"
         }
     },
     "scripts": {
@@ -57,6 +67,7 @@
             "@cs-check"
         ],
         "cs-check": "phpcs",
-        "cs-fix": "phpcbf"
+        "cs-fix": "phpcbf",
+        "psalm": "psalm --show-info=true"
     }
 }
