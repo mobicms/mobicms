@@ -1,0 +1,6 @@
+# Common ignores
+.idea
+/phpunit.xml
+/.phpunit.result.cache
+/README_LOCAL.md
+/vendor

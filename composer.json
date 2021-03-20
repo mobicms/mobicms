@@ -1,0 +1,53 @@
+{
+    "name": "mobicms/mobicms",
+    "description": "mobiCMS Content Management System core ftamework",
+    "type": "mobicms-library",
+    "homepage": "https://mobicms.org",
+    "license": "GPL-3.0-only",
+    "keywords": [
+        "mobicms",
+        "cms",
+        "php",
+        "mysql"
+    ],
+    "authors": [
+        {
+            "name": "Oleg Kasyanov",
+            "role": "Team Lead, Developer",
+            "homepage": "http://mobicms.net",
+            "email": "dev@mobicms.net"
+        },
+        {
+            "name": "mobiCMS Contributors",
+            "homepage": "https://github.com/mobicms/mobicms/graphs/contributors"
+        }
+    ],
+    "support": {
+        "docs": "https://mobicms.org/docs",
+        "forum": "https://mobicms.org/forum",
+        "source": "https://github.com/mobicms/mobicms",
+        "issues": "https://github.com/mobicms/mobicms/issues"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-PDO": "*",
+        "ext-mbstring": "*",
+        "laminas/laminas-config-aggregator": "^1.5",
+        "laminas/laminas-diactoros": "^2.5",
+        "laminas/laminas-servicemanager": "^3.6",
+        "mezzio/mezzio": "^3.3",
+        "mezzio/mezzio-fastroute": "^3.1",
+        "mezzio/mezzio-helpers": "^5.4",
+        "mobicms/render": "^2.0"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mobicms\\": "src/"
+        }
+    }
+}
