@@ -64,7 +64,8 @@
     },
     "scripts": {
         "check": [
-            "@cs-check"
+            "@cs-check",
+            "@psalm"
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",

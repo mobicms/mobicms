@@ -18,8 +18,6 @@ use Mezzio\Handler\NotFoundHandler;
 use Mezzio\Helper;
 use Mezzio\Router\Middleware;
 use Laminas\Stratigility\Middleware\ErrorHandler;
-use Psr\Http\Server\MiddlewareInterface;
-use Psr\Http\Server\RequestHandlerInterface;
 
 class Pipeline
 {
@@ -41,7 +39,7 @@ class Pipeline
         /** @var Application $app */
         $app = $callback();
 
-        /** @var MiddlewareInterface|RequestHandlerInterface $val */
+        /** @var \Psr\Http\Server\MiddlewareInterface|\Psr\Http\Server\RequestHandlerInterface $val */
         foreach ($this->pipeList() as $val) {
             $app->pipe($val);
         }
