@@ -24,13 +24,18 @@ class ContainerFactory
 
     public static function getContainer(): ServiceManager
     {
-        return null !== self::$containerInstance
-            ? self::$containerInstance
-            : self::$containerInstance = self::buildContainer(self::getConfig());
+        if (null === self::$containerInstance) {
+            self::$containerInstance = self::buildContainer(self::getConfigProviders());
+        }
+
+        return self::$containerInstance;
     }
 
-    private static function buildContainer(array $config): ServiceManager
+    private static function buildContainer(array $configProviders): ServiceManager
     {
+        $aggregator = new ConfigAggregator($configProviders, M_FILE_CONFIG_CACHE);
+        $config = $aggregator->getMergedConfig();
+
         /** @var array<array-key, string> $dbConfig */
         $dbConfig = $config['database'] ?? [];
 
@@ -43,29 +48,25 @@ class ContainerFactory
         return new ServiceManager($dependencies);
     }
 
-    private static function getConfig(): array
+    public static function getConfigProviders(): array
     {
-        $aggregator = new ConfigAggregator(
-            [
-                // Include cache configuration
-                new ArrayProvider(['config_cache_path' => M_FILE_CONFIG_CACHE]),
+        return [
+            // Include cache configuration
+            new ArrayProvider(['config_cache_path' => M_FILE_CONFIG_CACHE]),
 
-                // Include packages configuration
-                \Mezzio\ConfigProvider::class,
-                \Mezzio\Helper\ConfigProvider::class,
-                \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
-                \Mezzio\Router\ConfigProvider::class,
-                \Laminas\HttpHandlerRunner\ConfigProvider::class,
-                ConfigProvider::class,
+            // Include packages configuration
+            \Mezzio\ConfigProvider::class,
+            \Mezzio\Helper\ConfigProvider::class,
+            \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
+            \Mezzio\Router\ConfigProvider::class,
+            \Laminas\HttpHandlerRunner\ConfigProvider::class,
+            ConfigProvider::class,
 
-                // // Load packages configurations
-                new PhpFileProvider((string) M_PATH_CONFIG . 'packages/*.php'),
+            // // Load packages configurations
+            new PhpFileProvider((string) M_PATH_CONFIG . 'packages/*.php'),
 
-                // Load application config in a pre-defined order
-                new PhpFileProvider((string) M_PATH_CONFIG . 'autoload/{{,*.}global,{,*.}local}.php'),
-            ],
-            M_FILE_CONFIG_CACHE
-        );
-        return $aggregator->getMergedConfig();
+            // Load application config in a pre-defined order
+            new PhpFileProvider((string) M_PATH_CONFIG . 'autoload/{{,*.}global,{,*.}local}.php'),
+        ];
     }
 }
