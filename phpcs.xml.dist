@@ -9,6 +9,7 @@
 
     <!-- Paths to check -->
     <file>src</file>
+    <file>tests/unit</file>
 
     <!-- Generic rules -->
     <rule ref="PSR12"/>

@@ -29,9 +29,9 @@ use Mezzio\Application;
 
 class PipelineTest extends MockeryTestCase
 {
-    public function testPipelineReturnsAnApplicationObject()
+    public function testPipelineReturnsAnApplicationObject(): void
     {
-        $application = function () {
+        $application = function (): Application {
             $mock = Mockery::mock(Application::class);
             $mock->shouldReceive('pipe')->with(ErrorHandler::class)->once();
             $mock->shouldReceive('pipe')->with(ServerUrlMiddleware::class)->once();

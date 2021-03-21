@@ -19,39 +19,30 @@ use PHPUnit\Framework\TestCase;
 
 class ConfigProviderTest extends TestCase
 {
-    public function testInvocationReturnsArray(): array
-    {
-        $config = (new ConfigProvider())();
-        $this->assertIsArray($config);
+    private array $config = [];
+    private array $dependencies = [];
 
-        return $config;
+    public function setUp(): void
+    {
+        $this->config = (new ConfigProvider())();
+        $this->dependencies = (array) $this->config['dependencies'];
     }
 
-    /**
-     * @depends testInvocationReturnsArray
-     */
-    public function testConfigHasDebugKeyWithBooleanFalseValue(array $config): void
+    public function testConfigHasDebugKeyWithBooleanFalseValue(): void
     {
-        $this->assertArrayHasKey('debug', $config);
-        $this->assertFalse($config['debug']);
+        $this->assertArrayHasKey('debug', $this->config);
+        $this->assertFalse($this->config['debug']);
     }
 
-    /**
-     * @depends testInvocationReturnsArray
-     */
-    public function testProviderDefinesExpectedAliases(array $config) : void
+    public function testProviderDefinesExpectedAliases(): void
     {
-        $aliases = $config['dependencies']['aliases'];
+        $aliases = (array) $this->dependencies['aliases'];
         $this->assertArrayHasKey(TemplateRendererInterface::class, $aliases);
     }
 
-    /**
-     * @depends testInvocationReturnsArray
-     */
-    public function testProviderDefinesExpectedFactoryServices(array $config): void
+    public function testProviderDefinesExpectedFactoryServices(): void
     {
-        $factories = $config['dependencies']['factories'];
-
+        $factories = (array) $this->dependencies['factories'];
         $this->assertArrayHasKey(Renderer::class, $factories);
     }
 }
