@@ -20,13 +20,13 @@ define('M_START_TIME', microtime(true));
 const DS = DIRECTORY_SEPARATOR;
 
 define('M_PATH_ROOT', dirname(__DIR__) . DS);
-const M_PATH_SYSTEM = M_PATH_ROOT . DS . 'mobicms' . DS;
+const M_PATH_SYSTEM = M_PATH_ROOT;
 
-const M_PATH_CONFIG = __DIR__ . DS;
-const M_PATH_DATA = M_PATH_SYSTEM . 'data' . DS;
-const M_PATH_CACHE = M_PATH_DATA . 'cache' . DS;
-const M_PATH_LOG = M_PATH_DATA . 'logs' . DS;
-const M_PATH_PUBLIC = M_PATH_ROOT . 'www' . DS;
+const M_PATH_CONFIG = M_PATH_ROOT;
+const M_PATH_DATA = M_PATH_ROOT . 'tmp' . DS;
+const M_PATH_CACHE = M_PATH_ROOT . 'tmp' . DS;
+const M_PATH_LOG = M_PATH_ROOT . 'tmp' . DS;
+const M_PATH_PUBLIC = M_PATH_ROOT . 'tmp' . DS;
 
 // System files
 const M_FILE_CONFIG_CACHE = M_PATH_CACHE . 'system-config.cache';
