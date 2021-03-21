@@ -59,10 +59,10 @@ class ContainerFactory
                 ConfigProvider::class,
 
                 // // Load packages configurations
-                new PhpFileProvider(M_PATH_CONFIG . 'packages/*.php'),
+                new PhpFileProvider((string) M_PATH_CONFIG . 'packages/*.php'),
 
                 // Load application config in a pre-defined order
-                new PhpFileProvider(M_PATH_CONFIG . 'autoload/{{,*.}global,{,*.}local}.php'),
+                new PhpFileProvider((string) M_PATH_CONFIG . 'autoload/{{,*.}global,{,*.}local}.php'),
             ],
             M_FILE_CONFIG_CACHE
         );
