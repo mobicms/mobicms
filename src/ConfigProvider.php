@@ -14,22 +14,22 @@ namespace Mobicms;
 
 use Mezzio\Application;
 use Mezzio\Template\TemplateRendererInterface;
-use Mobicms\System\View\Renderer;
-use Mobicms\System\View\RendererFactory;
+use Mobicms\System\View\Engine;
+use Mobicms\System\View\EngineFactory;
 
 class ConfigProvider
 {
     public function __invoke(): array
     {
         return [
-            'debug'           => false,
-            'zend-expressive' => $this->getExpressiveConfig(), //TODO: refactoring ???
-            'dependencies'    => $this->getDependencies(),
-            'templates'       => $this->getTemplates(),
+            'debug'        => false,
+            'mezzio'       => $this->getMezzioConfig(),
+            'dependencies' => $this->getDependencies(),
+            'templates'    => $this->getTemplates(),
         ];
     }
 
-    private function getExpressiveConfig(): array
+    private function getMezzioConfig(): array
     {
         return [
             // Provide templates for the error handling middleware
@@ -44,7 +44,7 @@ class ConfigProvider
     {
         return [
             'aliases' => [
-                TemplateRendererInterface::class => Renderer::class,
+                TemplateRendererInterface::class => Engine::class,
             ],
 
             'delegators' => [
@@ -54,7 +54,7 @@ class ConfigProvider
             ],
 
             'factories' => [
-                Renderer::class => RendererFactory::class,
+                Engine::class => EngineFactory::class,
             ],
         ];
     }

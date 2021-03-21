@@ -69,11 +69,13 @@
         "check": [
             "@cs-check",
             "@psalm",
+            "@psalm-ta",
             "@test"
         ],
         "cs-check": "phpcs",
         "cs-fix": "phpcbf",
         "psalm": "psalm --show-info=true",
+        "psalm-ta": "psalm --taint-analysis --show-info=true --report=results.sarif",
         "test": "phpunit --colors=always",
         "test-coverage": [
             "@putenv XDEBUG_MODE=coverage",

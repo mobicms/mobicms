@@ -12,30 +12,13 @@ declare(strict_types=1);
 
 namespace Mobicms\System\View;
 
-use Mobicms\Render\Engine;
-use Mezzio\Template\ArrayParametersTrait;
 use Mezzio\Template\TemplateRendererInterface;
 
-class Renderer implements TemplateRendererInterface
+class Engine extends \Mobicms\Render\Engine implements TemplateRendererInterface
 {
-    use ArrayParametersTrait;
-
-    /**
-     * @var Engine
-     */
-    private $template;
-
-    public function __construct(Engine $template)
+    public function getPaths(): array
     {
-        $this->template = $template;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function render(string $name, $params = []): string
-    {
-        return $this->template->render($name, $this->normalizeParams($params));
+        return [];
     }
 
     /**
@@ -44,16 +27,11 @@ class Renderer implements TemplateRendererInterface
      * @param string $path
      * @param string|null $namespace
      */
-    public function addPath(string $path, string $namespace = null): void
+    public function addPath(string $path, ?string $namespace = null): void
     {
         if (null !== $namespace) {
-            $this->template->addFolder($namespace, $path);
+            $this->addFolder($namespace, $path);
         }
-    }
-
-    public function getPaths(): array
-    {
-        return [];
     }
 
     public function addDefaultParam(string $templateName, string $param, $value): void
@@ -61,6 +39,6 @@ class Renderer implements TemplateRendererInterface
         $template = $templateName === self::TEMPLATE_ALL
             ? []
             : [$templateName];
-        $this->template->addData([$param => $value], $template);
+        $this->addData([$param => $value], $template);
     }
 }

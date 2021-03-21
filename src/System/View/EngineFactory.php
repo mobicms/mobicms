@@ -12,19 +12,26 @@ declare(strict_types=1);
 
 namespace Mobicms\System\View;
 
-use Mobicms\Render\Engine;
-use Psr\Container\ContainerInterface;
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
+use Psr\Container\ContainerInterface;
 
 use function is_array;
 
-class RendererFactory
+class EngineFactory
 {
-    public function __invoke(ContainerInterface $container): Renderer
+    public function __invoke(ContainerInterface $container): Engine
     {
         $engine = new Engine();
 
+        $this->registerFunctions($container, $engine);
+        $this->addTemplatePaths($container, $engine);
+
+        return $engine;
+    }
+
+    private function registerFunctions(ContainerInterface $container, Engine $engine): void
+    {
         /** @var UrlHelper $urlHelper */
         $urlHelper = $container->get(UrlHelper::class);
         $engine->registerFunction('url', $urlHelper);
@@ -32,17 +39,13 @@ class RendererFactory
         /** @var ServerUrlHelper $serverUrlHelper */
         $serverUrlHelper = $container->get(ServerUrlHelper::class);
         $engine->registerFunction('serverurl', $serverUrlHelper);
-
-        /** @var array<array-key, mixed> $config */
-        $config = $container->get('config')['templates'] ?? [];
-        $this->addTemplatePath($engine, $config);
-
-        // Inject engine
-        return new Renderer($engine);
     }
 
-    private function addTemplatePath(Engine $engine, array $config): void
+    private function addTemplatePaths(ContainerInterface $container, Engine $engine): void
     {
+        /** @var array<array-key, mixed> $config */
+        $config = $container->get('config')['templates'] ?? [];
+
         /** @var array<string, string> $allPaths */
         $allPaths = isset($config['paths']) && is_array($config['paths']) ? $config['paths'] : [];
 

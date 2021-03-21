@@ -7,6 +7,7 @@ This package is not an independent component and is used exclusively as part of 
 [![Packagist](https://img.shields.io/packagist/dt/mobicms/mobicms)](https://packagist.org/packages/mobicms/mobicms)
 
 [![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/analysis.yml)
+[![CI-Security](https://github.com/mobicms/mobicms/workflows/Security/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/security.yml)
 [![CI-Tests](https://github.com/mobicms/mobicms/workflows/Tests/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/tests.yml)
 [![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/code-structure/develop/code-coverage)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
