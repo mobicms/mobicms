@@ -15,9 +15,7 @@ namespace Mobicms;
 use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\ConfigAggregator;
 use Laminas\ConfigAggregator\PhpFileProvider;
-use Laminas\HttpHandlerRunner\ConfigProvider;
 use Laminas\ServiceManager\ServiceManager;
-use Mobicms\ConfigProvider as MobicmsConfig;
 
 class ContainerFactory
 {
@@ -57,8 +55,8 @@ class ContainerFactory
                 \Mezzio\Helper\ConfigProvider::class,
                 \Mezzio\Router\FastRouteRouter\ConfigProvider::class,
                 \Mezzio\Router\ConfigProvider::class,
+                \Laminas\HttpHandlerRunner\ConfigProvider::class,
                 ConfigProvider::class,
-                MobicmsConfig::class,
 
                 // // Load packages configurations
                 new PhpFileProvider(M_PATH_CONFIG . 'packages/*.php'),
