@@ -14,7 +14,7 @@ build:
           - phpcs-run
 
 tools:
-  external_code_coverage: false
+  external_code_coverage: true
 
 checks:
   php: true
