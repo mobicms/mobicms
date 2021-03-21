@@ -1,6 +1,6 @@
-# `mobicms/system`
+# `mobicms/mobicms`
+This package is not an independent component and is used exclusively as part of [mobiCMS](https://github.com/mobicms).
 
-This package is part of [mobiCMS](https://github.com/mobicms) Content Management System.
 
 [![GitHub](https://img.shields.io/github/license/mobicms/mobicms?color=green)](https://github.com/mobicms/mobicms/blob/develop/LICENSE)
 [![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mobicms/mobicms)](https://github.com/mobicms/mobicms/releases)
@@ -9,6 +9,10 @@ This package is part of [mobiCMS](https://github.com/mobicms) Content Management
 [![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions?query=workflow%3AAnalysis)
 [![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
+
+
+## Usage
+For installation instructions and system requirements see [mobicms/mobicms-skeleton](https://github.com/mobicms/mobicms-skeleton).
 
 
 ## Contributing
