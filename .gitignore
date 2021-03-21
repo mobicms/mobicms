@@ -3,4 +3,5 @@
 /phpunit.xml
 /.phpunit.result.cache
 /README_LOCAL.md
+/results.sarif
 /vendor

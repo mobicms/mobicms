@@ -59,3 +59,11 @@ jobs:
 
       - name: Static Analysis using Psalm
         run: composer psalm
+
+      - name: Security Analysis using Psalm
+        run: composer psalm-ta
+
+      - name: Upload Security Analysis results to GitHub
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: results.sarif
