@@ -56,7 +56,7 @@ class Renderer implements TemplateRendererInterface
         return [];
     }
 
-    public function addDefaultParam(?string $templateName, string $param, $value): void
+    public function addDefaultParam(string $templateName, string $param, $value): void
     {
         $template = $templateName === self::TEMPLATE_ALL
             ? []

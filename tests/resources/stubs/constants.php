@@ -19,7 +19,7 @@ define('M_START_TIME', microtime(true));
 // System wide constants
 const DS = DIRECTORY_SEPARATOR;
 
-define('M_PATH_ROOT', dirname(__DIR__) . DS);
+define('M_PATH_ROOT', (string) dirname(__DIR__) . DS);
 const M_PATH_SYSTEM = M_PATH_ROOT;
 
 const M_PATH_CONFIG = M_PATH_ROOT;
