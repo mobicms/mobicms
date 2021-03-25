@@ -18,3 +18,11 @@ tools:
 
 checks:
   php: true
+
+filter:
+  paths:
+    - src/
+    - templates/
+
+  dependency_paths:
+    - tests/
