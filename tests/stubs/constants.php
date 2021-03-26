@@ -19,14 +19,14 @@ define('M_START_TIME', microtime(true));
 // System wide constants
 const DS = DIRECTORY_SEPARATOR;
 
-define('M_PATH_ROOT', dirname(__DIR__) . DS);
+const M_PATH_ROOT = __DIR__ . DS;
 const M_PATH_SYSTEM = M_PATH_ROOT;
 
 const M_PATH_CONFIG = M_PATH_ROOT;
-const M_PATH_DATA = M_PATH_ROOT . 'tmp' . DS;
-const M_PATH_CACHE = M_PATH_ROOT . 'tmp' . DS;
-const M_PATH_LOG = M_PATH_ROOT . 'tmp' . DS;
-const M_PATH_PUBLIC = M_PATH_ROOT . 'tmp' . DS;
+const M_PATH_DATA = M_PATH_ROOT;
+const M_PATH_CACHE = M_PATH_ROOT;
+const M_PATH_LOG = M_PATH_ROOT;
+const M_PATH_PUBLIC = M_PATH_ROOT;
 
 // System files
 const M_FILE_CONFIG_CACHE = M_PATH_CACHE . 'system-config.cache';
