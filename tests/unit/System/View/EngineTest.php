@@ -54,7 +54,7 @@ class EngineTest extends TestCase
     public function testAddSharedParameters(): void
     {
         $var = 'mobiCMS';
-        $this->engine->addDefaultParam($this->engine::TEMPLATE_ALL, 'var', $var);
+        $this->engine->addDefaultParam((string) $this->engine::TEMPLATE_ALL, 'var', $var);
 
         $this->assertEquals($var, $this->engine->render('test::tpl-1'));
         $this->assertEquals($var, $this->engine->render('test::tpl-2'));
@@ -75,7 +75,7 @@ class EngineTest extends TestCase
     {
         $var1 = 'test1';
         $var2 = 'test2';
-        $this->engine->addDefaultParam($this->engine::TEMPLATE_ALL, 'var', $var1);
+        $this->engine->addDefaultParam((string) $this->engine::TEMPLATE_ALL, 'var', $var1);
         $this->engine->addDefaultParam('test::tpl-2', 'var', $var2);
 
         $this->assertEquals($var1, $this->engine->render('test::tpl-1'));
@@ -86,7 +86,7 @@ class EngineTest extends TestCase
     {
         $var1 = 'test1';
         $var2 = 'test2';
-        $this->engine->addDefaultParam($this->engine::TEMPLATE_ALL, 'var', $var1);
+        $this->engine->addDefaultParam((string) $this->engine::TEMPLATE_ALL, 'var', $var1);
 
         $this->assertEquals($var1, $this->engine->render('test::tpl-1'));
         $this->assertEquals($var2, $this->engine->render('test::tpl-2', ['var' => $var2]));
