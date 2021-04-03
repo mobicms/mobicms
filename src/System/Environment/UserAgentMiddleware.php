@@ -27,7 +27,7 @@ class UserAgentMiddleware implements MiddlewareInterface
             $userAgent = mb_substr($request->getHeaderLine('User-Agent'), 0, 255);
             $request = $request->withAttribute(
                 self::USER_AGENT_ATTRIBUTE,
-                filter_var($userAgent, FILTER_SANITIZE_SPECIAL_CHARS)
+                htmlspecialchars($userAgent, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
             );
         }
 

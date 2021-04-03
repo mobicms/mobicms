@@ -44,14 +44,14 @@ class UserAgentMiddlewareTest extends MockeryTestCase
 
     public function testSanitizeSpecialChars(): void
     {
-        $this->prepare(true, '<>', '&#60;&#62;');
+        $this->prepare(true, '&"\'<>', '&amp;&quot;&#039;&lt;&gt;');
         $middleware = new UserAgentMiddleware();
         $middleware->process($this->request, $this->handler);
     }
 
     public function testWithoutUserAgentHeader(): void
     {
-        $this->prepare(false, '<>', '&#60;&#62;');
+        $this->prepare(false, '', '');
         $middleware = new UserAgentMiddleware();
         $result = $middleware->process($this->request, $this->handler);
         $this->assertInstanceOf(ResponseInterface::class, $result);
