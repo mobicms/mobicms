@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace MobicmsTest\System\Environment;
 
-use Mobicms\System\Environment\UserAgentMiddleware;
+use Mobicms\System\Environment\ClientAttributesMiddleware;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Psr\Http\Message\ResponseInterface;
@@ -30,7 +30,7 @@ class UserAgentMiddlewareTest extends MockeryTestCase
     public function testRequestHasAttributeWithUserAgent(): void
     {
         $this->prepare(true, 'test', 'test');
-        $middleware = new UserAgentMiddleware();
+        $middleware = new ClientAttributesMiddleware();
         $result = $middleware->process($this->request, $this->handler);
         $this->assertInstanceOf(ResponseInterface::class, $result);
     }
@@ -38,21 +38,21 @@ class UserAgentMiddlewareTest extends MockeryTestCase
     public function testTrimLongUserAgentTo255Symbols(): void
     {
         $this->prepare(true, str_repeat('a', 300), str_repeat('a', 255));
-        $middleware = new UserAgentMiddleware();
+        $middleware = new ClientAttributesMiddleware();
         $middleware->process($this->request, $this->handler);
     }
 
     public function testSanitizeSpecialChars(): void
     {
         $this->prepare(true, '&"\'<>', '&amp;&quot;&#039;&lt;&gt;');
-        $middleware = new UserAgentMiddleware();
+        $middleware = new ClientAttributesMiddleware();
         $middleware->process($this->request, $this->handler);
     }
 
     public function testWithoutUserAgentHeader(): void
     {
         $this->prepare(false, '', '');
-        $middleware = new UserAgentMiddleware();
+        $middleware = new ClientAttributesMiddleware();
         $result = $middleware->process($this->request, $this->handler);
         $this->assertInstanceOf(ResponseInterface::class, $result);
     }
@@ -71,7 +71,7 @@ class UserAgentMiddlewareTest extends MockeryTestCase
                 ->once()
                 ->andReturn($getHeaderLine);
             $request->shouldReceive('withAttribute')
-                ->with(UserAgentMiddleware::USER_AGENT_ATTRIBUTE, $withAttribute)
+                ->with(ClientAttributesMiddleware::USER_AGENT_ATTRIBUTE, $withAttribute)
                 ->once()
                 ->andReturn($request);
         } else {

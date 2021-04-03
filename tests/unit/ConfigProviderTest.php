@@ -14,7 +14,7 @@ namespace MobicmsTest;
 
 use Mezzio\Template\TemplateRendererInterface;
 use Mobicms\ConfigProvider;
-use Mobicms\System\View\Engine;
+use Mobicms\Render\Engine;
 use PHPUnit\Framework\TestCase;
 
 class ConfigProviderTest extends TestCase
@@ -34,15 +34,10 @@ class ConfigProviderTest extends TestCase
         $this->assertFalse($this->config['debug']);
     }
 
-    public function testProviderDefinesExpectedAliases(): void
-    {
-        $aliases = (array) $this->dependencies['aliases'];
-        $this->assertArrayHasKey(TemplateRendererInterface::class, $aliases);
-    }
-
     public function testProviderDefinesExpectedFactoryServices(): void
     {
         $factories = (array) $this->dependencies['factories'];
         $this->assertArrayHasKey(Engine::class, $factories);
+        $this->assertArrayHasKey(TemplateRendererInterface::class, $factories);
     }
 }

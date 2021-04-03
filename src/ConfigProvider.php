@@ -14,8 +14,9 @@ namespace Mobicms;
 
 use Mezzio\Application;
 use Mezzio\Template\TemplateRendererInterface;
-use Mobicms\System\View\Engine;
+use Mobicms\Render\Engine;
 use Mobicms\System\View\EngineFactory;
+use Mobicms\System\View\FakeTemplateRenderer;
 
 class ConfigProvider
 {
@@ -43,9 +44,7 @@ class ConfigProvider
     private function getDependencies(): array
     {
         return [
-            'aliases' => [
-                TemplateRendererInterface::class => Engine::class,
-            ],
+            'aliases' => [],
 
             'delegators' => [
                 Application::class => [
@@ -54,7 +53,8 @@ class ConfigProvider
             ],
 
             'factories' => [
-                Engine::class => EngineFactory::class,
+                Engine::class                    => EngineFactory::class,
+                TemplateRendererInterface::class => FakeTemplateRenderer::class,
             ],
         ];
     }

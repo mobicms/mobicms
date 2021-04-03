@@ -14,7 +14,7 @@ namespace MobicmsTest\System\View;
 
 use Mezzio\Helper\ServerUrlHelper;
 use Mezzio\Helper\UrlHelper;
-use Mobicms\System\View\Engine;
+use Mobicms\Render\Engine;
 use Mobicms\System\View\EngineFactory;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
