@@ -22,7 +22,7 @@ use Mezzio\Router\Middleware\ImplicitOptionsMiddleware;
 use Mezzio\Router\Middleware\MethodNotAllowedMiddleware;
 use Mezzio\Router\Middleware\RouteMiddleware;
 use Mobicms\Pipeline;
-use Mobicms\System\Environment\ClientAttributesMiddleware;
+use Mobicms\System\Environment\IpAndUserAgentMiddleware;
 use Mockery;
 use Mockery\Adapter\Phpunit\MockeryTestCase;
 use Psr\Container\ContainerInterface;
@@ -35,7 +35,7 @@ class PipelineTest extends MockeryTestCase
         $application = function (): Application {
             $mock = Mockery::mock(Application::class);
             $mock->shouldReceive('pipe')->with(ErrorHandler::class)->once();
-            $mock->shouldReceive('pipe')->with(ClientAttributesMiddleware::class)->once();
+            $mock->shouldReceive('pipe')->with(IpAndUserAgentMiddleware::class)->once();
             $mock->shouldReceive('pipe')->with(ServerUrlMiddleware::class)->once();
             $mock->shouldReceive('pipe')->with(RouteMiddleware::class)->once();
             $mock->shouldReceive('pipe')->with(ImplicitHeadMiddleware::class)->once();

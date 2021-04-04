@@ -17,7 +17,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Server\MiddlewareInterface;
 use Psr\Http\Server\RequestHandlerInterface;
 
-class ClientAttributesMiddleware implements MiddlewareInterface
+class IpAndUserAgentMiddleware implements MiddlewareInterface
 {
     public const IP_ADDR = 'ip_address';
     public const IP_VIA_PROXY_ADDR = 'ip_via_proxy_address';
@@ -65,16 +65,24 @@ class ClientAttributesMiddleware implements MiddlewareInterface
             if (
                 $request->hasHeader($header)
                 && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s', $request->getHeaderLine($header), $vars)
+                && null !== ($ip = $this->extractIp($request, $vars))
             ) {
-                foreach ($vars[0] as $ip) {
-                    if (
-                        $this->isValidIp($ip)
-                        && ! preg_match('#^(10|172\.16|192\.168)\.#', $ip)
-                        && $ip !== $this->determineIpAddress($request)
-                    ) {
-                        return $ip;
-                    }
-                }
+                return $ip;
+            }
+        }
+
+        return null;
+    }
+
+    private function extractIp(ServerRequestInterface $request, array $vars): ?string
+    {
+        foreach ($vars[0] as $ip) {
+            if (
+                $this->isValidIp($ip)
+                && ! preg_match('#^(10|172\.16|192\.168)\.#', $ip)
+                && $ip !== $this->determineIpAddress($request)
+            ) {
+                return $ip;
             }
         }
 

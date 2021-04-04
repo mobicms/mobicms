@@ -12,7 +12,7 @@ declare(strict_types=1);
 
 namespace Mobicms;
 
-use Mobicms\System\Environment\ClientAttributesMiddleware;
+use Mobicms\System\Environment\IpAndUserAgentMiddleware;
 use Psr\Container\ContainerInterface;
 use Mezzio\Application;
 use Mezzio\Handler\NotFoundHandler;
@@ -59,7 +59,7 @@ class Pipeline
             // Register the error handler (should be the first)
             ErrorHandler::class,
 
-            ClientAttributesMiddleware::class,
+            IpAndUserAgentMiddleware::class,
             Helper\ServerUrlMiddleware::class,
 
             // Register the routing middleware
