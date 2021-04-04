@@ -20,41 +20,79 @@ use Psr\Http\Server\RequestHandlerInterface;
 class ClientAttributesMiddleware implements MiddlewareInterface
 {
     public const IP_ADDR = 'ip_address';
-    public const IP_REMOTE_ADDR = 'ip_remote_address';
     public const IP_VIA_PROXY_ADDR = 'ip_via_proxy_address';
-    public const USER_AGENT = 'user_agent';
+    public const USER_AGENT = 'http_user_agent';
+
+    private array $headersToInspect = [
+        'Forwarded',
+        'X-Forwarded-For',
+        'X-Forwarded',
+        'X-Cluster-Client-Ip',
+        'Client-Ip',
+    ];
 
     public function process(ServerRequestInterface $request, RequestHandlerInterface $handler): ResponseInterface
     {
-        $request = $this->determineIpRemoteAddress($request);
-        $request = $this->determineUserAgent($request);
+        if (null !== ($ip = $this->determineIpAddress($request))) {
+            $request = $request->withAttribute(self::IP_ADDR, $ip);
+        }
+
+        if (null !== ($ipVia = $this->determineIpViaProxyAddress($request))) {
+            $request = $request->withAttribute(self::IP_VIA_PROXY_ADDR, $ipVia);
+        }
+
+        if (null !== ($ua = $this->determineUserAgent($request))) {
+            $request = $request->withAttribute(self::USER_AGENT, $ua);
+        }
 
         return $handler->handle($request);
     }
 
-    public function determineIpRemoteAddress(ServerRequestInterface $request): ServerRequestInterface
+    public function determineIpAddress(ServerRequestInterface $request): ?string
     {
         $server = $request->getServerParams();
-        return isset($server['REMOTE_ADDR']) && $this->isValidIp((string) $server['REMOTE_ADDR'])
-            ? $request->withAttribute(self::IP_REMOTE_ADDR, $server['REMOTE_ADDR'])
-            : $request;
+
+        if (isset($server['REMOTE_ADDR']) && $this->isValidIp((string) $server['REMOTE_ADDR'])) {
+            return (string) $server['REMOTE_ADDR'];
+        }
+
+        return null;
     }
 
-    public function determineUserAgent(ServerRequestInterface $request): ServerRequestInterface
+    public function determineIpViaProxyAddress(ServerRequestInterface $request): ?string
+    {
+        foreach ($this->headersToInspect as $header) {
+            if (
+                $request->hasHeader($header)
+                && preg_match_all('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#s', $request->getHeaderLine($header), $vars)
+            ) {
+                foreach ($vars[0] as $ip) {
+                    if (
+                        $this->isValidIp($ip)
+                        && ! preg_match('#^(10|172\.16|192\.168)\.#', $ip)
+                        && $ip !== $this->determineIpAddress($request)
+                    ) {
+                        return $ip;
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+    public function determineUserAgent(ServerRequestInterface $request): ?string
     {
         if ($request->hasHeader('User-Agent')) {
             $userAgent = mb_substr($request->getHeaderLine('User-Agent'), 0, 255);
-            return $request->withAttribute(
-                self::USER_AGENT,
-                htmlspecialchars($userAgent, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8')
-            );
+            return htmlspecialchars($userAgent, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
         }
 
-        return $request;
+        return null;
     }
 
     public function isValidIp(string $ip): bool
     {
-        return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6);
+        return (bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
     }
 }
