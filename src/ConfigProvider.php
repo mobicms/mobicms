@@ -15,8 +15,10 @@ namespace Mobicms;
 use Mezzio\Application;
 use Mezzio\Template\TemplateRendererInterface;
 use Mobicms\Render\Engine;
+use Mobicms\System\Database\PdoFactory;
 use Mobicms\System\View\EngineFactory;
 use Mobicms\System\View\FakeTemplateRenderer;
+use PDO;
 
 class ConfigProvider
 {
@@ -54,6 +56,7 @@ class ConfigProvider
 
             'factories' => [
                 Engine::class                    => EngineFactory::class,
+                PDO::class                       => PdoFactory::class,
                 TemplateRendererInterface::class => FakeTemplateRenderer::class,
             ],
         ];
