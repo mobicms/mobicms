@@ -12,6 +12,10 @@ declare(strict_types=1);
 
 namespace Mobicms\System\Database;
 
+use Mobicms\System\Database\Exception\CommonException;
+use Mobicms\System\Database\Exception\InvalidDatabaseException;
+use Mobicms\System\Database\Exception\InvalidPasswordException;
+use Mobicms\System\Database\Exception\UnableToConnectException;
 use PDO;
 use Psr\Container\ContainerInterface;
 
@@ -23,26 +27,62 @@ class PdoFactory
             ? (array) $container->get('database')
             : [];
 
-        return new PDO(
+        return $this->factory(
             $this->prepareDsn($config),
-            $config['user'] ?? null,
-            $config['pass'] ?? null,
-            [
-                PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-                PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            ]
+            (string) ($config['user'] ?? ''),
+            (string) ($config['pass'] ?? '')
         );
+    }
+
+    public function factory(string $dsn, string $user, string $password): PDO
+    {
+        try {
+            return new PDO(
+                $dsn,
+                $user,
+                $password,
+                [
+                    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                ]
+            );
+        } catch (\PDOException $exception) {
+            $code = (int) $exception->getCode();
+            switch ($code) {
+                case 1045:
+                    throw new InvalidPasswordException(
+                        'Invalid database password',
+                        $code
+                    );
+                case 1049:
+                    throw new InvalidDatabaseException(
+                        'Invalid database credentials (user, password)',
+                        $code
+                    );
+                case 2002:
+                    throw new UnableToConnectException(
+                        'Unable to connect to the specified database server or port',
+                        $code
+                    );
+                default:
+                    throw new CommonException(
+                        $exception->getMessage(),
+                        $code
+                    );
+            }
+        }
     }
 
     private function prepareDsn(array $config): string
     {
         if (! empty($config['dsn'])) {
-            return $config['dsn'];
+            return (string) $config['dsn'];
         }
 
-        $host = ! empty($config['host']) ? $config['host'] : 'localhost';
-        $port = ! empty($config['port']) ? ';port=' . $config['port'] : '';
-        $dbname = ! empty($config['dbname']) ? $config['dbname'] : '';
-        return 'mysql:host=' . $host . $port . ';dbname=' . $dbname . ';charset=utf8mb4';
+        return 'mysql:host='
+            . (! empty($config['host']) ? (string) $config['host'] : 'localhost')
+            . (! empty($config['port']) ? ';port=' . (int) $config['port'] : '')
+            . ';dbname=' . (! empty($config['dbname']) ? (string) $config['dbname'] : '')
+            . ';charset=utf8mb4';
     }
 }
