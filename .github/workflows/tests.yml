@@ -15,11 +15,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Start MySQL
+        run: sudo /etc/init.d/mysql start
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: gd
+          extensions: mbstring, pdo_mysql
           coverage: pcov
 
       - name: Get composer cache directory
