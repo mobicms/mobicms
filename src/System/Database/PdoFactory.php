@@ -14,7 +14,7 @@ namespace Mobicms\System\Database;
 
 use Mobicms\System\Database\Exception\CommonException;
 use Mobicms\System\Database\Exception\InvalidDatabaseException;
-use Mobicms\System\Database\Exception\InvalidPasswordException;
+use Mobicms\System\Database\Exception\InvalidCredentialsException;
 use Mobicms\System\Database\Exception\UnableToConnectException;
 use PDO;
 use Psr\Container\ContainerInterface;
@@ -50,7 +50,7 @@ class PdoFactory
             $code = (int) $exception->getCode();
             switch ($code) {
                 case 1045:
-                    throw new InvalidPasswordException(
+                    throw new InvalidCredentialsException(
                         'Invalid database password',
                         $code
                     );

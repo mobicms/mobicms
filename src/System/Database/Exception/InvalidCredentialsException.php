@@ -12,6 +12,6 @@ declare(strict_types=1);
 
 namespace Mobicms\System\Database\Exception;
 
-class InvalidPasswordException extends CommonException
+class InvalidCredentialsException extends CommonException
 {
 }
