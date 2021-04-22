@@ -19,7 +19,7 @@ use Mobicms\ContainerFactory;
 use PHPUnit\Framework\TestCase;
 use Psr\Container\ContainerInterface;
 
-class FactoryTest extends TestCase
+class ContainerFactoryTest extends TestCase
 {
     public function testFactoryReturnsContainerObject(): void
     {
