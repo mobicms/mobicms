@@ -4,6 +4,13 @@
          bootstrap="vendor/autoload.php"
          colors="true">
 
+    <php>
+        <var name="DB_HOST" value="127.0.0.1"/>
+        <var name="DB_USER" value="root"/>
+        <var name="DB_PASS" value="password"/>
+        <var name="DB_NAME" value="mobicmstest"/>
+    </php>
+
     <coverage processUncoveredFiles="true">
         <include>
             <directory suffix=".php">./src</directory>
