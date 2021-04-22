@@ -28,7 +28,10 @@ class FakeTemplateRenderer implements TemplateRendererInterface
 
     public function __invoke(ContainerInterface $container): TemplateRendererInterface
     {
-        $this->engine = $container->get(Engine::class);
+        /** @var Engine $engine */
+        $engine = $container->get(Engine::class);
+        $this->engine = $engine;
+
         return $this;
     }
 

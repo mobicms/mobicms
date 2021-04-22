@@ -23,6 +23,7 @@ class IpAndUserAgentMiddleware implements MiddlewareInterface
     public const IP_VIA_PROXY_ADDR = 'ip_via_proxy_address';
     public const USER_AGENT = 'http_user_agent';
 
+    /** @var array<array-key, string> */
     private array $headersToInspect = [
         'Forwarded',
         'X-Forwarded-For',
@@ -76,6 +77,7 @@ class IpAndUserAgentMiddleware implements MiddlewareInterface
 
     private function extractIp(ServerRequestInterface $request, array $vars): ?string
     {
+        /** @var array<array-key, array<array-key, string>> $vars */
         foreach ($vars[0] as $ip) {
             if (
                 $this->isValidIp($ip)
