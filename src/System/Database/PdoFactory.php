@@ -13,6 +13,7 @@ declare(strict_types=1);
 namespace Mobicms\System\Database;
 
 use Mobicms\System\Database\Exception\CommonException;
+use Mobicms\System\Database\Exception\MissingConfigException;
 use Mobicms\System\Database\Exception\InvalidDatabaseException;
 use Mobicms\System\Database\Exception\InvalidCredentialsException;
 use Mobicms\System\Database\Exception\UnableToConnectException;
@@ -23,9 +24,11 @@ class PdoFactory
 {
     public function __invoke(ContainerInterface $container): PDO
     {
-        $config = $container->has('database')
-            ? (array) $container->get('database')
-            : [];
+        if (! $container->has('database')) {
+            throw new MissingConfigException('Missing database configuration', 0);
+        }
+
+        $config = (array) $container->get('database');
 
         return $this->factory(
             $this->prepareDsn($config),
