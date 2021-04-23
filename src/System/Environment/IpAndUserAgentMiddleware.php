@@ -23,7 +23,7 @@ class IpAndUserAgentMiddleware implements MiddlewareInterface
     public const IP_VIA_PROXY_ADDR = 'ip_via_proxy_address';
     public const USER_AGENT = 'http_user_agent';
 
-    /** @var array<array-key, string> */
+    /** @var array<string> */
     private array $headersToInspect = [
         'Forwarded',
         'X-Forwarded-For',
