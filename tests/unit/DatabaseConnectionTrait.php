@@ -33,7 +33,7 @@ trait DatabaseConnectionTrait
         self::$dbPort = (int) ($GLOBALS['DB_PORT'] ?? 3306);
         self::$dbName = (string) ($GLOBALS['DB_NAME'] ?? 'test_database');
         self::$dbUser = (string) ($GLOBALS['DB_USER'] ?? 'root');
-        self::$dbPass = (string) ($GLOBALS['DB_PASS'] ?? 'password');
+        self::$dbPass = (string) ($GLOBALS['DB_PASS'] ?? 'root');
         // phpcs:enable
         self::$dsn = 'mysql:host=' . self::$dbHost . ';port=' . self::$dbPort
             . ';dbname=' . self::$dbName . ';charset=utf8mb4';

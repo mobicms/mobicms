@@ -15,6 +15,7 @@ namespace MobicmsTest\System\Database;
 use Mobicms\System\Database\Exception\CommonException;
 use Mobicms\System\Database\Exception\InvalidCredentialsException;
 use Mobicms\System\Database\Exception\InvalidDatabaseException;
+use Mobicms\System\Database\Exception\MissingConfigException;
 use Mobicms\System\Database\Exception\UnableToConnectException;
 use Mobicms\System\Database\PdoFactory;
 use MobicmsTest\DatabaseConnectionTrait;
@@ -31,6 +32,10 @@ class PdoFactoryTest extends MockeryTestCase
 
     public function setUp(): void
     {
+        if (null === self::$pdo) {
+            $this->markTestSkipped('Need database to test.');
+        }
+
         $this->container = Mockery::mock(ContainerInterface::class);
         $this->container
             ->shouldReceive('has')
@@ -204,5 +209,19 @@ class PdoFactoryTest extends MockeryTestCase
 
         $this->expectException(CommonException::class);
         (new PdoFactory())($this->container);
+    }
+
+    /**
+     * @psalm-suppress InvalidArgument
+     */
+    public function testMissingConfigThrowMissingConfigException(): void
+    {
+        $container = Mockery::mock(ContainerInterface::class);
+        $container
+            ->shouldReceive('has')
+            ->with('database')
+            ->andReturn(false);
+        $this->expectException(MissingConfigException::class);
+        (new PdoFactory())($container);
     }
 }
