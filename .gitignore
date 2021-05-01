@@ -1,5 +1,6 @@
 # Common ignores
 .idea
+/clover.xml
 /phpunit.xml
 /.phpunit.result.cache
 /README_LOCAL.md
