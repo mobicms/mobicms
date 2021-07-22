@@ -3,7 +3,6 @@ $code = !empty($code) ? $code : 0;
 $message = !empty($message) ? $message : '';
 $this->layout('layout::default', ['title' => sprintf('ERROR:%d %s', $code, $message)])
 ?>
-
 <h1>ERROR <?= !empty($code) ? '[' . $this->e($code) . ']' : '' ?></h1>
 <?= !empty($message) ? '<h5>' . $this->e($message) . '</h5>' : '' ?>
 <?= !empty($help) ? '<p>' . $this->e($help) . '</p>' : '' ?>
