@@ -52,7 +52,7 @@ class EngineFactoryTest extends MockeryTestCase
      */
     public function testEngineHasConfiguredFolder(Engine $engine): void
     {
-        $result = $engine->getFolder('test');
+        $result = $engine->getPath('test');
         $this->assertEquals(__DIR__, $result[0]);
     }
 }

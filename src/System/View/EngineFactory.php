@@ -9,8 +9,6 @@ use Mezzio\Helper\UrlHelper;
 use Mobicms\Render\Engine;
 use Psr\Container\ContainerInterface;
 
-use function is_array;
-
 class EngineFactory
 {
     public function __invoke(ContainerInterface $container): Engine
@@ -36,14 +34,14 @@ class EngineFactory
 
     private function addTemplatePaths(ContainerInterface $container, Engine $engine): void
     {
-        /** @var array<array-key, mixed> $config */
+        /** @var array $config */
         $config = $container->get('config')['templates'] ?? [];
 
         /** @var array<string, string> $allPaths */
-        $allPaths = isset($config['paths']) && is_array($config['paths']) ? $config['paths'] : [];
+        $allPaths = $config['paths'] ?? [];
 
         foreach ($allPaths as $namespace => $path) {
-            $engine->addFolder($namespace, $path);
+            $engine->addPath($path, $namespace);
         }
     }
 }
