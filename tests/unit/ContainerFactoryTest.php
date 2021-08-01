@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace MobicmsTest;
 
-use Laminas\ConfigAggregator\ArrayProvider;
 use Laminas\ConfigAggregator\PhpFileProvider;
 use Mobicms\ConfigProvider;
 use Mobicms\ContainerFactory;
@@ -13,16 +12,25 @@ use Psr\Container\ContainerInterface;
 
 class ContainerFactoryTest extends TestCase
 {
-    public function testFactoryReturnsContainerObject(): void
+    public function testFactoryReturnsContainerObject(): ContainerInterface
     {
         $container = ContainerFactory::getContainer();
         $this->assertInstanceOf(ContainerInterface::class, $container);
+
+        return $container;
     }
 
-    public function testConfigHasNesessaryProviders(): void
+    /**
+     * @depends testFactoryReturnsContainerObject
+     */
+    public function testContainerHasConfigurationArray(ContainerInterface $container): void
+    {
+        $this->assertIsArray($container->get('config'));
+    }
+
+    public function testConfigHasNecessaryProviders(): void
     {
         $providers = ContainerFactory::getConfigProviders();
-        $this->assertEquals(new ArrayProvider(['config_cache_path' => M_FILE_CONFIG_CACHE]), $providers[0]);
         $this->assertEquals(\Mezzio\ConfigProvider::class, $providers[1]);
         $this->assertEquals(\Mezzio\Helper\ConfigProvider::class, $providers[2]);
         $this->assertEquals(\Mezzio\Router\FastRouteRouter\ConfigProvider::class, $providers[3]);

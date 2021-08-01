@@ -11,33 +11,26 @@ use Laminas\ServiceManager\ServiceManager;
 
 class ContainerFactory
 {
-    /** @var null|ServiceManager */
-    private static $containerInstance;
+    private static ?ServiceManager $containerInstance = null;
 
     public static function getContainer(): ServiceManager
     {
         if (null === self::$containerInstance) {
-            self::$containerInstance = self::buildContainer(self::getConfigProviders());
+            $aggregator = new ConfigAggregator(self::getConfigProviders(), M_FILE_CONFIG_CACHE);
+            $config = $aggregator->getMergedConfig();
+
+            /** @var array<string> $dbConfig */
+            $dbConfig = $config['database'] ?? [];
+
+            /** @var array[] $dependencies */
+            $dependencies = $config['dependencies'];
+            $dependencies['services']['database'] = $dbConfig;
+            unset($config['dependencies'], $config['database']);
+            $dependencies['services']['config'] = $config;
+            self::$containerInstance = new ServiceManager($dependencies);
         }
 
         return self::$containerInstance;
-    }
-
-    private static function buildContainer(array $configProviders): ServiceManager
-    {
-        $aggregator = new ConfigAggregator($configProviders, M_FILE_CONFIG_CACHE);
-        $config = $aggregator->getMergedConfig();
-
-        /** @var array<array-key, string> $dbConfig */
-        $dbConfig = $config['database'] ?? [];
-
-        /** @var array<array-key, array<array-key, mixed>> $dependencies */
-        $dependencies = $config['dependencies'];
-        $dependencies['services']['database'] = $dbConfig;
-        unset($config['dependencies'], $config['database']);
-        $dependencies['services']['config'] = $config;
-
-        return new ServiceManager($dependencies);
     }
 
     public static function getConfigProviders(): array

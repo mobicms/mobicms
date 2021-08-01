@@ -67,6 +67,7 @@ trait DatabaseConnectionTrait
     public function loadSqlDump(string $file): void
     {
         if (null !== self::$pdo && file_exists($file)) {
+            /** @var array<string> $errors */
             $errors = $this->parseSql($file, self::$pdo);
 
             if (! empty($errors)) {
