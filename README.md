@@ -1,5 +1,5 @@
 # `mobicms/mobicms`
-This package is not an independent component and is used exclusively as part of [mobiCMS](https://github.com/mobicms).
+This package is not an independent component and is used exclusively as core framework of [mobiCMS](https://github.com/mobicms).
 
 
 [![GitHub](https://img.shields.io/github/license/mobicms/mobicms?color=green)](https://github.com/mobicms/mobicms/blob/develop/LICENSE)
