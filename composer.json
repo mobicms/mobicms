@@ -37,7 +37,7 @@
         "laminas/laminas-config-aggregator": "^1.5",
         "laminas/laminas-diactoros": "^2.6",
         "laminas/laminas-servicemanager": "^3.7",
-        "mezzio/mezzio": "^3.5",
+        "mezzio/mezzio": "^3.6",
         "mezzio/mezzio-fastroute": "^3.2",
         "mezzio/mezzio-helpers": "^5.6",
         "mobicms/render": "dev-develop"
