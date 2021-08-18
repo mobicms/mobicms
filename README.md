@@ -12,6 +12,8 @@ This package is not an independent component and is used exclusively as core fra
 [![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/code-structure/develop/code-coverage)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
 
+[![YAGNI](https://img.shields.io/badge/principle-YAGNI-blueviolet.svg)](https://en.wikipedia.org/wiki/YAGNI)
+[![KISS](https://img.shields.io/badge/principle-KISS-blueviolet.svg)](https://en.wikipedia.org/wiki/KISS_principle)
 
 ## Usage
 For installation instructions and system requirements see [mobicms/mobicms-skeleton](https://github.com/mobicms/mobicms-skeleton).
@@ -22,6 +24,9 @@ Contributions are welcome! Please read [CONTRIBUTING](https://github.com/mobicms
 
 This project adheres to a [Contributor Code of Conduct](https://github.com/mobicms/mobicms/blob/develop/.github/CODE_OF_CONDUCT.md).
 By participating in this project and its community, you are expected to uphold this code.
+
+In our development, we follow the principles of [YAGNI](https://en.wikipedia.org/wiki/YAGNI) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).  
+The source code should not have extra unnecessary functionality and should be as simple and efficient as possible.
 
 
 ## License
