@@ -27,6 +27,7 @@ class ContainerFactory
             $dependencies['services']['database'] = $dbConfig;
             unset($config['dependencies'], $config['database']);
             $dependencies['services']['config'] = $config;
+            /** @psalm-suppress InvalidArgument */
             self::$containerInstance = new ServiceManager($dependencies);
         }
 
