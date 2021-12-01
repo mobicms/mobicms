@@ -2644,12 +2644,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mobicms/testutils.git",
-                "reference": "61cafee52721a8fdc78a4f59f79b253561915a18"
+                "reference": "8dc07289ca07b2cbd1fb01e73dd51c8659eaccab"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mobicms/testutils/zipball/61cafee52721a8fdc78a4f59f79b253561915a18",
-                "reference": "61cafee52721a8fdc78a4f59f79b253561915a18",
+                "url": "https://api.github.com/repos/mobicms/testutils/zipball/8dc07289ca07b2cbd1fb01e73dd51c8659eaccab",
+                "reference": "8dc07289ca07b2cbd1fb01e73dd51c8659eaccab",
                 "shasum": ""
             },
             "require": {
@@ -2695,7 +2695,7 @@
                 "issues": "https://github.com/mobicms/testutils/issues",
                 "source": "https://github.com/mobicms/testutils"
             },
-            "time": "2021-12-01T17:04:29+00:00"
+            "time": "2021-12-01T19:46:16+00:00"
         },
         {
             "name": "mockery/mockery",

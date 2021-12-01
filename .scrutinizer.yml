@@ -21,7 +21,7 @@ checks:
 
 filter:
   paths:
-    - src/
+    - system/src/
     - templates/
 
   dependency_paths:
