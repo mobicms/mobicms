@@ -3,6 +3,16 @@
 mobiCMS Content Management System is in the early development stage and is not intended for installation on existing
 public sites. **LOCAL TEST ONLY!!!**
 
+[![GitHub](https://img.shields.io/github/license/mobicms/mobicms?color=green)](https://github.com/mobicms/mobicms/blob/develop/LICENSE)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mobicms/mobicms)](https://github.com/mobicms/mobicms/releases)
+[![Packagist](https://img.shields.io/packagist/dt/mobicms/mobicms)](https://packagist.org/packages/mobicms/mobicms)
+
+[![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/analysis.yml)
+[![CI-Security](https://github.com/mobicms/mobicms/workflows/Security/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/security.yml)
+[![CI-Tests](https://github.com/mobicms/mobicms/workflows/Tests/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/tests.yml)
+[![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/code-structure/develop/code-coverage)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
+
 
 ## System requirements
 
