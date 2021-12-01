@@ -18,7 +18,7 @@ class HomePageHandlerTest extends MockeryTestCase
 
     public function setUp(): void
     {
-        self::loadSqlDump('install\sql\demodata.sql');
+        self::loadSqlDump('.\install\sql\demodata.sql');
     }
 
     public function testReturnsHtmlResponse(): void
