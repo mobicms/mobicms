@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
-         bootstrap="vendor/autoload.php"
+         xsi:noNamespaceSchemaLocation="system/vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="system/vendor/autoload.php"
+         executionOrder="depends,defects"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         failOnRisky="true"
+         failOnWarning="true"
+         verbose="true"
          colors="true">
+    <testsuites>
+        <testsuite name="default">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+
+    <coverage processUncoveredFiles="true">
+        <include>
+            <directory suffix=".php">system/src</directory>
+        </include>
+    </coverage>
 
     <php>
         <var name="DB_HOST" value="127.0.0.1"/>
         <var name="DB_USER" value="root"/>
         <var name="DB_PASS" value="root"/>
-        <var name="DB_NAME" value="mobicmstest"/>
+        <var name="TEST_DB_NAME" value="mobicmstest"/>
     </php>
-
-    <coverage processUncoveredFiles="true">
-        <include>
-            <directory suffix=".php">./src</directory>
-        </include>
-    </coverage>
-
-    <testsuites>
-        <testsuite name="mobicms">
-            <directory>./tests/unit</directory>
-        </testsuite>
-    </testsuites>
 </phpunit>

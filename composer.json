@@ -1,21 +1,24 @@
 {
     "name": "mobicms/mobicms",
-    "description": "mobiCMS Content Management System core ftamework",
-    "type": "mobicms-library",
-    "homepage": "https://mobicms.org",
+    "description": "mobiCMS Content Management System",
+    "type": "project",
     "license": "GPL-3.0-only",
+    "homepage": "https://mobicms.org",
     "keywords": [
         "mobicms",
         "cms",
-        "php",
+        "middleware",
+        "psr-7",
+        "psr-11",
+        "psr-15",
         "mysql"
     ],
     "authors": [
         {
             "name": "Oleg Kasyanov",
             "role": "Team Lead, Developer",
-            "homepage": "http://mobicms.net",
-            "email": "dev@mobicms.net"
+            "homepage": "https://github.com/batumibiz",
+            "email": "oleg@mobicms.org"
         },
         {
             "name": "mobiCMS Contributors",
@@ -23,30 +26,33 @@
         }
     ],
     "support": {
-        "docs": "https://mobicms.org/docs",
-        "forum": "https://mobicms.org/forum",
         "source": "https://github.com/mobicms/mobicms",
         "issues": "https://github.com/mobicms/mobicms/issues"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true,
+        "vendor-dir": "system/vendor"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": "~8.0.0 || ~8.1.0",
-        "ext-PDO": "*",
-        "ext-mbstring": "*",
+        "ext-pdo": "*",
         "laminas/laminas-config-aggregator": "^1.7",
-        "laminas/laminas-diactoros": "^2.8",
-        "laminas/laminas-servicemanager": "^3.10",
-        "mezzio/mezzio": "^3.6",
         "mezzio/mezzio-fastroute": "^3.3",
-        "mezzio/mezzio-helpers": "^5.7",
-        "mobicms/render": "dev-develop"
+        "mobicms/render": "dev-main",
+        "mobicms/system": "dev-main",
+        "psr/container": "^1.1",
+        "psr/http-message": "^1.0"
     },
     "require-dev": {
+        "filp/whoops": "^2.14",
+        "mobicms/testutils": "dev-main",
         "mockery/mockery": "^1.4",
         "phpunit/phpunit": "^9.5",
-        "psalm/plugin-mockery": "^0.7.0",
-        "psalm/plugin-phpunit": "^0.15.1",
+        "psalm/plugin-mockery": "^0.9",
+        "psalm/plugin-phpunit": "^0.16",
         "roave/security-advisories": "dev-master",
         "slevomat/coding-standard": "^7.0",
         "squizlabs/php_codesniffer": "^3.6",
@@ -54,13 +60,10 @@
     },
     "autoload": {
         "psr-4": {
-            "Mobicms\\": "src/"
+            "Mobicms\\": "system/src/"
         }
     },
     "autoload-dev": {
-        "files": [
-            "tests/stubs/constants.php"
-        ],
         "psr-4": {
             "MobicmsTest\\": "tests/unit/"
         }

@@ -1,36 +1,53 @@
-# `mobicms/mobicms`
-This package is not an independent component and is used exclusively as core framework of [mobiCMS](https://github.com/mobicms).
+# [mobiCMS](https://mobicms.org)
+
+mobiCMS Content Management System is in the early development stage and is not intended for installation on existing
+public sites. **LOCAL TEST ONLY!!!**
 
 
-[![GitHub](https://img.shields.io/github/license/mobicms/mobicms?color=green)](https://github.com/mobicms/mobicms/blob/develop/LICENSE)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/mobicms/mobicms)](https://github.com/mobicms/mobicms/releases)
-[![Packagist](https://img.shields.io/packagist/dt/mobicms/mobicms)](https://packagist.org/packages/mobicms/mobicms)
+## System requirements
 
-[![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/analysis.yml)
-[![CI-Security](https://github.com/mobicms/mobicms/workflows/Security/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/security.yml)
-[![CI-Tests](https://github.com/mobicms/mobicms/workflows/Tests/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/tests.yml)
-[![Code Coverage](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/code-structure/develop/code-coverage)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/mobicms/mobicms/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/mobicms/mobicms/?branch=develop)
+Make sure your server meets the following requirements:
+- Apache webserver
+  - [mod_rewrite](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
+- PHP 8.0 or higher
+  - [gd](https://www.php.net/manual/en/book.image.php)
+  - [mbstring](https://www.php.net/manual/en/book.mbstring.php)
+  - [pdo_mysql](https://www.php.net/manual/en/ref.pdo-mysql.php)
+- MariaDB, MySQL or other compatible database
+  - InnoDB must be enabled
 
-[![YAGNI](https://img.shields.io/badge/principle-YAGNI-blueviolet.svg)](https://en.wikipedia.org/wiki/YAGNI)
-[![KISS](https://img.shields.io/badge/principle-KISS-blueviolet.svg)](https://en.wikipedia.org/wiki/KISS_principle)
 
-## Usage
-For installation instructions and system requirements see [mobicms/mobicms-skeleton](https://github.com/mobicms/mobicms-skeleton).
+## Installation
+**To install the general availability version**, go to the [**project website**](https://mobicms.org) and download the latest available distributive.
+Then follow the installation instructions that came with it.
 
+**To install the developer version**, you must have a [Composer](https://getcomposer.org) dependency manager
+and [GIT](https://git-scm.com/) version control system.
+1. Clone or download this repository on local workstation.
+2. Assign the repository folder as Apache virtual host, or move contents to the previously created virtual host folder.
+3. Create MySQL Database.
+4. Import into the created database ALL files that are located in the `/install/sql` folder.
+5. Copy the `/config/autoload/db.local.php.dist` file to `/config/autoload/db.local.php`.
+6. Write in the copied file the credentials of access to the database you created.
+7. Copy the `/config/autoload/development.local.php.dist` file to `/config/autoload/development.local.php`.
+8. Open the console in the virtual host folder and install the dependencies using the command `composer install`.
+9. **This is all done**. If you go to the address of your virtual host from the browser, you should see a working site with demo data.
 
 ## Contributing
-Contributions are welcome! Please read [CONTRIBUTING](https://github.com/mobicms/mobicms/blob/develop/.github/CONTRIBUTING.md) for details.  
+Contributions are welcome! Please read [CONTRIBUTING](https://github.com/mobicms/mobicms/blob/develop/.github/CONTRIBUTING.md) for details.
 
 This project adheres to a [Contributor Code of Conduct](https://github.com/mobicms/mobicms/blob/develop/.github/CODE_OF_CONDUCT.md).
 By participating in this project and its community, you are expected to uphold this code.
 
-In our development, we follow the principles of [YAGNI](https://en.wikipedia.org/wiki/YAGNI) and [KISS](https://en.wikipedia.org/wiki/KISS_principle).  
+[![YAGNI](https://img.shields.io/badge/principle-YAGNI-blueviolet.svg)](https://en.wikipedia.org/wiki/YAGNI)
+[![KISS](https://img.shields.io/badge/principle-KISS-blueviolet.svg)](https://en.wikipedia.org/wiki/KISS_principle)
+
+In our development, we follow the principles of YAGNI and KISS.  
 The source code should not have extra unnecessary functionality and should be as simple and efficient as possible.
 
 
 ## License
-This package is licensed for use under the GPL-3 License.  
+mobiCMS is licensed for use under the GNU General Public License v3.0 (GPL-3.0).  
 Please see [LICENSE](https://github.com/mobicms/mobicms/blob/develop/LICENSE) for more information.
 
 
@@ -40,6 +57,6 @@ All rights to used third-party libraries, fonts, images, etc. reserved by their 
 
 
 ## Our links
-- [**Project Website**](https://mobicms.org) and support forum
+- [**mobiCMS Project**](https://mobicms.org) website and support forum
 - [**Facebook**](https://www.facebook.com/mobicms)
 - [**Twitter**](https://twitter.com/mobicms)

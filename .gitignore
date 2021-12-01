@@ -1,8 +1,10 @@
-# Common ignores
-.idea
+/.idea
+/*.cache
 /clover.xml
+/config/autoload/local.php
+/config/autoload/*.local.php
+/data/cache/*
+!/data/cache/.gitkeep
 /phpunit.xml
-/.phpunit.result.cache
-/README_LOCAL.md
 /results.sarif
-/vendor
+/system/vendor/

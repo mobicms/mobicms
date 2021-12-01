@@ -2,13 +2,15 @@
 <psalm
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://getpsalm.org/schema/config"
-        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+        xsi:schemaLocation="https://getpsalm.org/schema/config system/vendor/vimeo/psalm/config.xsd"
 >
     <projectFiles>
-        <directory name="src"/>
-        <directory name="tests/unit"/>
+        <directory name="config"/>
+        <directory name="system/src"/>
+        <directory name="public"/>
+        <directory name="tests"/>
         <ignoreFiles>
-            <directory name="vendor"/>
+            <directory name="system/vendor"/>
         </ignoreFiles>
     </projectFiles>
 

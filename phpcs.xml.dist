@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
-<ruleset name="mobiCMS coding standard">
-    <description>mobiCMS coding standard</description>
+<ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="system/vendor/squizlabs/php_codesniffer/phpcs.xsd">
     <config name="installed_paths" value="../../slevomat/coding-standard"/>
-
-    <!-- display progress -->
-    <arg value="p"/>
+    <arg name="basepath" value="."/>
+    <arg name="cache" value=".phpcs.cache"/>
     <arg name="colors"/>
+    <arg name="extensions" value="php"/>
+    <arg name="parallel" value="80"/>
+
+    <!-- Show progress -->
+    <arg value="p"/>
 
     <!-- Paths to check -->
-    <file>src</file>
-    <file>tests/unit</file>
+    <file>config</file>
+    <file>public</file>
+    <file>system/src</file>
+    <file>tests</file>
+    <exclude-pattern>config/config.php</exclude-pattern>
+    <exclude-pattern>config/routes.php</exclude-pattern>
 
     <!-- Generic rules -->
     <rule ref="PSR12"/>
