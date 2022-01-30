@@ -10,6 +10,7 @@ public sites. **LOCAL TEST ONLY!!!**
 [![CI-Analysis](https://github.com/mobicms/mobicms/workflows/Analysis/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/analysis.yml)
 [![CI-Security](https://github.com/mobicms/mobicms/workflows/Security/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/security.yml)
 [![CI-Tests](https://github.com/mobicms/mobicms/workflows/Tests/badge.svg)](https://github.com/mobicms/mobicms/actions/workflows/tests.yml)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobicms_mobicms&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=mobicms_mobicms)
 
 
 ## System requirements
