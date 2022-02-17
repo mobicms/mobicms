@@ -39,12 +39,19 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --no-suggest --no-interaction
 
-      - name: PhpUnit test
+      - name: Test
         if: matrix.php-versions != '8.1'
         run: composer test
         continue-on-error: true
 
-      - name: PhpUnit test-coverage
+      - name: Test with latest dependencies
+        if: matrix.php-versions == '8.1'
+        run: |
+          composer update
+          composer test
+        continue-on-error: true
+
+      - name: Test with coverage
         if: matrix.php-versions == '8.1'
         working-directory: ./
         run: |
