@@ -74,4 +74,3 @@ jobs:
         run: |
           composer update
           composer test
-        continue-on-error: true
