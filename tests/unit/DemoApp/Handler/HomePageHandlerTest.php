@@ -8,11 +8,10 @@ use Mobicms\DemoApp\Handler\HomePageHandler;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mobicms\Render\Engine;
 use Mobicms\Testutils\DbHelpersTrait;
-use Mockery;
-use Mockery\Adapter\Phpunit\MockeryTestCase;
+use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
-class HomePageHandlerTest extends MockeryTestCase
+class HomePageHandlerTest extends TestCase
 {
     use DbHelpersTrait;
 
@@ -23,30 +22,29 @@ class HomePageHandlerTest extends MockeryTestCase
 
     public function testReturnsHtmlResponse(): void
     {
-        $request = Mockery::mock(ServerRequestInterface::class);
+        $request = $this->createMock(ServerRequestInterface::class);
         $request
-            ->shouldReceive('getServerParams')
-            ->andReturn(['SERVER_SOFTWARE' => 'test']);
+            ->expects($this->once())
+            ->method('getServerParams')
+            ->willReturn(['SERVER_SOFTWARE' => 'test']);
         $request
-            ->shouldReceive('getAttribute')
-            ->andReturn('');
-        $request
-            ->shouldReceive('getAttributes')
-            ->andReturn(
+            ->expects($this->once())
+            ->method('getAttributes')
+            ->willReturn(
                 [
-                    'int' => 123,
+                    'int'    => 123,
                     'string' => 'string',
-                    'array' => [],
+                    'array'  => [],
                     'object' => new \stdClass(),
-                    'other' => null,
+                    'other'  => null,
                 ]
             );
 
-        $renderer = Mockery::mock(Engine::class);
+        $renderer = $this->createMock(Engine::class);
         $renderer
-            ->shouldReceive('render')
-            ->with('app::home-page', Mockery::andAnyOtherArgs())
-            ->andReturn('');
+            ->expects($this->once())
+            ->method('render')
+            ->willReturn('');
 
         $homePage = new HomePageHandler($renderer, self::$pdo);
         $response = $homePage->handle($request);
