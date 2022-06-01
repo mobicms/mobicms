@@ -7,14 +7,11 @@ namespace MobicmsTest\DemoApp\Handler;
 use Mobicms\DemoApp\Handler\HomePageHandler;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Mobicms\Render\Engine;
-use Mobicms\Testutils\DbHelpersTrait;
-use PHPUnit\Framework\TestCase;
+use Mobicms\Testutils\MysqlTestCase;
 use Psr\Http\Message\ServerRequestInterface;
 
-class HomePageHandlerTest extends TestCase
+class HomePageHandlerTest extends MysqlTestCase
 {
-    use DbHelpersTrait;
-
     public function setUp(): void
     {
         self::loadSqlDump('install/sql/demodata.sql');
