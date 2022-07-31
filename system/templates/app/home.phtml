@@ -1,9 +1,21 @@
 <?php
 
-$this->layout('layout::default', ['title' => 'Home']);
+declare(strict_types=1);
+
+/**
+ * @var Mobicms\Render\Template\Template $this
+ * @var string $webServer
+ * @var string $pageTitle
+ * @var string $ip
+ * @var string $ipViaProxy
+ * @var string $userAgent
+ * @var array $psrattributes
+ */
+
+$this->layout('layouts::default', ['title' => 'Home']);
+$this->sectionReplace('title', $this->e($pageTitle));
 $notUsed = '<span class="badge rounded-pill bg-warning text-dark">DOES NOT EXIST</span>';
 ?>
-
 <div class="alert alert-primary">
     <h1><span style="color: green">mobiCMS</span> Debug Module</h1>
     <p>
@@ -82,3 +94,6 @@ $notUsed = '<span class="badge rounded-pill bg-warning text-dark">DOES NOT EXIST
         </table>
     </div>
 </div>
+
+Generation: <?= round((microtime(true) - START_TIME), 4) ?> sec<br>
+Memory: <?= round((memory_get_usage() - START_MEMORY) / 1024 / 1024, 3) ?> Mb

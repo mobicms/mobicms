@@ -1,2 +1,2 @@
 RewriteEngine On
-RewriteRule (.*) ./public/$1
+RewriteRule (.*) ./www/$1

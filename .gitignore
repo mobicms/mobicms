@@ -1,10 +1,10 @@
 /.idea
 /*.cache
-/clover.xml
-/config/autoload/local.php
-/config/autoload/*.local.php
-/data/cache/*
-!/data/cache/.gitkeep
 /phpunit.xml
 /results.sarif
+/system/cache/*
+!/system/cache/.gitkeep
+/system/log/*
+!/system/log/.gitkeep
 /system/vendor/
+/config/config.local.php

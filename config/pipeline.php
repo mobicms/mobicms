@@ -2,75 +2,47 @@
 
 declare(strict_types=1);
 
-use Laminas\Stratigility\Middleware\ErrorHandler;
-use Mezzio\Application;
-use Mezzio\Handler\NotFoundHandler;
-use Mezzio\Helper\ServerUrlMiddleware;
-use Mezzio\Helper\UrlHelperMiddleware;
-use Mezzio\MiddlewareFactory;
-use Mezzio\Router\Middleware\DispatchMiddleware;
-use Mezzio\Router\Middleware\ImplicitHeadMiddleware;
-use Mezzio\Router\Middleware\ImplicitOptionsMiddleware;
-use Mezzio\Router\Middleware\MethodNotAllowedMiddleware;
-use Mezzio\Router\Middleware\RouteMiddleware;
-use Mobicms\System\Environment\IpAndUserAgentMiddleware;
-use Psr\Container\ContainerInterface;
+use HttpSoft\Basis\Application;
+use HttpSoft\Basis\Middleware\BodyParamsMiddleware;
+use HttpSoft\Basis\Middleware\ContentLengthMiddleware;
+use HttpSoft\Cookie\CookieSendMiddleware;
+use HttpSoft\ErrorHandler\ErrorHandlerMiddleware;
+use HttpSoft\Router\Middleware\RouteDispatchMiddleware;
+use HttpSoft\Router\Middleware\RouteMatchMiddleware;
+use Mobicms\System\Http\IpAndUserAgentMiddleware;
 
-return function (Application $app, MiddlewareFactory $factory, ContainerInterface $container): void {
-    // The error handler should be the first (most outer) middleware to catch
-    // all Exceptions.
-    $app->pipe(ErrorHandler::class);
-    $app->pipe(ServerUrlMiddleware::class);
+return function (Application $app): void {
+    // You can remove unnecessary middleware, but it is not recommended to remove or reorder
+    // "ErrorHandlerMiddleware", "RouteMatchMiddleware", and "RouteDispatchMiddleware".
 
-    // Pipe more middleware here that you want to execute on every request:
-    // - bootstrapping
-    // - pre-conditions
-    // - modifications to outgoing responses
-    //
-    // Piped Middleware may be either callables or service names. Middleware may
-    // also be passed as an array; each item in the array must resolve to
-    // middleware eventually (i.e., callable or service name).
-    //
-    // Middleware can be attached to specific paths, allowing you to mix and match
-    // applications under a common domain.  The handlers in each middleware
-    // attached this way will see a URI with the matched path segment removed.
-    //
-    // i.e., path of "/api/member/profile" only passes "/member/profile" to $apiMiddleware
-    // - $app->pipe('/api', $apiMiddleware);
-    // - $app->pipe('/docs', $apiDocMiddleware);
-    // - $app->pipe('/files', $filesMiddleware);
-
+    // The error handler should be the very first middleware to catch all exceptions.
+    $app->pipe(ErrorHandlerMiddleware::class);
     $app->pipe(IpAndUserAgentMiddleware::class);
 
-    // Register the routing middleware in the middleware pipeline.
-    // This middleware registers the Mezzio\Router\RouteResult request attribute.
-    $app->pipe(RouteMiddleware::class);
+    // Sets the request header Content-Length if it was not set earlier and the request body was defined.
+    $app->pipe(ContentLengthMiddleware::class);
 
-    // The following handle routing failures for common conditions:
-    // - HEAD request but no routes answer that method
-    // - OPTIONS request but no routes answer that method
-    // - method not allowed
-    // Order here matters; the MethodNotAllowedMiddleware should be placed
-    // after the Implicit*Middleware.
-    $app->pipe(ImplicitHeadMiddleware::class);
-    $app->pipe(ImplicitOptionsMiddleware::class);
-    $app->pipe(MethodNotAllowedMiddleware::class);
+    // Parses request body with "Content-type" header equal to:
+    // - application/json,
+    // - application/*+json,
+    // - application/x-www-form-urlencoded.
+    $app->pipe(BodyParamsMiddleware::class);
 
-    // Seed the UrlHelper with the routing results:
-    $app->pipe(UrlHelperMiddleware::class);
+    // Matches the incoming request with the added routes. If a match occurs, registers an instance
+    // of HttpSoft\Router\Route as a request attribute, using the class name as the attribute name.
+    $app->pipe(RouteMatchMiddleware::class);
 
-    // Add more middleware here that needs to introspect the routing results; this
-    // might include:
-    //
-    // - route-based authentication
-    // - route-based validation
-    // - etc.
+    // Pipe here any custom middleware that you want to execute on every request or for specific paths.
+    // For more information, see:
+    // - https://github.com/httpsoft/http-runner/blob/master/src/MiddlewarePipelineInterface.php
+    // - https://httpsoft.org/docs/runner/v1/middleware-pipeline
+    // - https://httpsoft.org/docs/app/v1/psr-7-and-psr-15
 
-    // Register the dispatch middleware in the middleware pipeline
-    $app->pipe(DispatchMiddleware::class);
+    // If cookies were set in the cookie manager, this middleware will add them to the response.
+    $app->pipe(CookieSendMiddleware::class);
 
-    // At this point, if no Response is returned by any middleware, the
-    // NotFoundHandler kicks in; alternately, you can provide other fallback
-    // middleware to execute.
-    $app->pipe(NotFoundHandler::class);
+    // Checks for the existence of a matching route (instance of Http Soft\Router\Route) as an attribute
+    // in the request. If it exists, the handler for this route is used, otherwise the request processing
+    // is delegated to the handler, which is passed as an argument to the "process()" method.
+    $app->pipe(RouteDispatchMiddleware::class);
 };

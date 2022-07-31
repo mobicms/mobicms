@@ -13,11 +13,8 @@
 
     <!-- Paths to check -->
     <file>config</file>
-    <file>public</file>
     <file>system/src</file>
     <file>tests</file>
-    <exclude-pattern>config/config.php</exclude-pattern>
-    <exclude-pattern>config/routes.php</exclude-pattern>
 
     <!-- Generic rules -->
     <rule ref="PSR12"/>

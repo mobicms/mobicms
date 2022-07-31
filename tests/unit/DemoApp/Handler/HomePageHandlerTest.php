@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MobicmsTest\DemoApp\Handler;
 
+use HttpSoft\Response\HtmlResponse;
 use Mobicms\DemoApp\Handler\HomePageHandler;
-use Laminas\Diactoros\Response\HtmlResponse;
 use Mobicms\Render\Engine;
 use Mobicms\Testutils\MysqlTestCase;
 use Psr\Http\Message\ServerRequestInterface;

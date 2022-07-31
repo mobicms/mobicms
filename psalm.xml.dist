@@ -7,7 +7,6 @@
     <projectFiles>
         <directory name="config"/>
         <directory name="system/src"/>
-        <directory name="public"/>
         <directory name="tests"/>
         <ignoreFiles>
             <directory name="system/vendor"/>
