@@ -57,5 +57,5 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --no-interaction
 
-      - name: Static Analysis using Psalm
+      - name: Static Analysis
         run: composer static-analysis

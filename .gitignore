@@ -2,9 +2,9 @@
 /*.cache
 /phpunit.xml
 /results.sarif
+/config/config.local.php
 /system/cache/*
 !/system/cache/.gitkeep
 /system/log/*
 !/system/log/.gitkeep
 /system/vendor/
-/config/config.local.php

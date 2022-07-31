@@ -6,11 +6,7 @@
     "homepage": "https://mobicms.org",
     "keywords": [
         "mobicms",
-        "cms",
-        "middleware",
-        "psr-7",
-        "psr-11",
-        "psr-15"
+        "cms"
     ],
     "authors": [
         {

@@ -46,7 +46,7 @@ jobs:
         run: composer test
         continue-on-error: true
 
-      - name: Test with coverage
+      - name: Test with Coverage
         if: matrix.php-versions == '8.1'
         working-directory: ./
         run: |

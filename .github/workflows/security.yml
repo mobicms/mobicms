@@ -36,10 +36,10 @@ jobs:
       - name: Install dependencies
         run: composer install --no-progress --no-interaction
 
-      - name: Security Analysis using Psalm
+      - name: Security Analysis
         run: composer security-analysis
 
-      - name: Upload Security Analysis results to GitHub
+      - name: Upload Security Analysis results
         uses: github/codeql-action/upload-sarif@v1
         with:
           sarif_file: results.sarif

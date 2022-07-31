@@ -1,11 +1,6 @@
 <?xml version="1.0"?>
-<psalm
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xmlns="https://getpsalm.org/schema/config"
-        xsi:schemaLocation="https://getpsalm.org/schema/config system/vendor/vimeo/psalm/config.xsd"
->
+<psalm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="https://getpsalm.org/schema/config" xsi:schemaLocation="https://getpsalm.org/schema/config system/vendor/vimeo/psalm/config.xsd">
     <projectFiles>
-        <directory name="config"/>
         <directory name="system/src"/>
         <directory name="tests"/>
         <ignoreFiles>

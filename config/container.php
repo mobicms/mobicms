@@ -28,10 +28,10 @@ use Psr\Log\LoggerInterface;
 return new Container(
     [
         'config'                           => function (): array {
-            $config = require_once 'config.php';
+            $config = require_once __DIR__ . '/config.php';
 
             if (is_file(__DIR__ . '/config.local.php')) {
-                $config = array_merge($config, require_once 'config.local.php');
+                $config = array_merge($config, require_once __DIR__ . '/config.local.php');
             }
 
             return $config;
