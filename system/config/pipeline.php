@@ -9,10 +9,8 @@ use HttpSoft\Cookie\CookieSendMiddleware;
 use HttpSoft\ErrorHandler\ErrorHandlerMiddleware;
 use HttpSoft\Router\Middleware\RouteDispatchMiddleware;
 use HttpSoft\Router\Middleware\RouteMatchMiddleware;
-use Mobicms\{
-    Middleware\IpAndUserAgentMiddleware,
-    Session\SessionMiddleware
-};
+use Mobicms\Http\IpAndUserAgentMiddleware;
+use Mobicms\Session\SessionMiddleware;
 
 return function (Application $app): void {
     // You can remove unnecessary middleware, but it is not recommended to remove or reorder
@@ -21,7 +19,6 @@ return function (Application $app): void {
     // The error handler should be the very first middleware to catch all exceptions.
     $app->pipe(ErrorHandlerMiddleware::class);
     $app->pipe(IpAndUserAgentMiddleware::class);
-    $app->pipe(SessionMiddleware::class);
 
     // Sets the request header Content-Length if it was not set earlier and the request body was defined.
     $app->pipe(ContentLengthMiddleware::class);
@@ -44,6 +41,7 @@ return function (Application $app): void {
 
     // If cookies were set in the cookie manager, this middleware will add them to the response.
     $app->pipe(CookieSendMiddleware::class);
+    $app->pipe(SessionMiddleware::class);
 
     // Checks for the existence of a matching route (instance of Http Soft\Router\Route) as an attribute
     // in the request. If it exists, the handler for this route is used, otherwise the request processing

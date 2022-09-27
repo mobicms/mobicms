@@ -6,8 +6,8 @@ namespace Mobicms\DemoApp\Handler;
 
 use HttpSoft\Response\HtmlResponse;
 use Mobicms\Render\Engine;
-use Mobicms\Middleware\IpAndUserAgentMiddleware;
-use Mobicms\Interface\SessionInterface;
+use Mobicms\Http\IpAndUserAgentMiddleware;
+use Mobicms\Session\SessionInterface;
 use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
