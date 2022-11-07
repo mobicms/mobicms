@@ -36,17 +36,18 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "~8.1.0",
-        "ext-pdo": "*",
+        "php": "~8.2",
         "ext-mbstring": "*",
+        "ext-random": "*",
+        "ext-pdo": "*",
         "mobicms/system": "dev-main"
     },
     "require-dev": {
-        "mobicms/testutils": "^1.0",
+        "mobicms/testutils": "^1.1",
         "phpunit/phpunit": "^9.5",
-        "slevomat/coding-standard": "^8.5",
+        "slevomat/coding-standard": "^8.7",
         "squizlabs/php_codesniffer": "^3.7",
-        "vimeo/psalm": "^4.27"
+        "vimeo/psalm": "^5.4"
     },
     "autoload": {
         "psr-4": {
