@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-return [
+$configGlobal = [
     // Common settings
     'debug'     => true,
     'log_file'  => 'log/app.log',
@@ -28,3 +28,8 @@ return [
         ],
     ],
 ];
+
+/** @var array<array-key, mixed> $configLocal */
+$configLocal = file_exists(__DIR__ . '/config.local.php') ? require_once __DIR__ . '/config.local.php' : [];
+
+return array_merge($configGlobal, $configLocal);

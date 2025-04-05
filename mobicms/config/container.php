@@ -29,17 +29,11 @@ use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Log\LoggerInterface;
 
-$config = require_once __DIR__ . '/config.php';
-
-if (is_file(__DIR__ . '/config.local.php')) {
-    $config = array_merge($config, require_once __DIR__ . '/config.local.php');
-}
-
 $container = new Container(
     [
         'services'  =>
             [
-                ConfigInterface::class => new ConfigContainer($config),
+                ConfigInterface::class => new ConfigContainer(require_once __DIR__ . '/config.php'),
             ],
         'factories' =>
             [
