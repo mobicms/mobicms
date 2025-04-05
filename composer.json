@@ -39,8 +39,8 @@
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "ext-random": "*",
-        "mobicms/container": "dev-main",
-        "mobicms/system": "dev-main"
+        "mobicms/system": "dev-main",
+        "psr/container": "^2.0"
     },
     "require-dev": {
         "slevomat/coding-standard": "^8.15",
