@@ -30,7 +30,7 @@
         "classmap-authoritative": true,
         "optimize-autoloader": true,
         "sort-packages": true,
-        "vendor-dir": "system/vendor"
+        "vendor-dir": "mobicms/vendor"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -51,7 +51,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Mobicms\\": "system/src/"
+            "Mobicms\\": "mobicms/src/"
         }
     },
     "scripts": {

@@ -1,7 +1,7 @@
 parameters:
     level: 6
     paths:
-        - system/src
+        - mobicms/src
 includes:
-    - system/vendor/phpstan/phpstan-deprecation-rules/rules.neon
-    - system/vendor/phpstan/phpstan-strict-rules/rules.neon
+    - mobicms/vendor/phpstan/phpstan-deprecation-rules/rules.neon
+    - mobicms/vendor/phpstan/phpstan-strict-rules/rules.neon

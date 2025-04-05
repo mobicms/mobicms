@@ -1,11 +1,10 @@
 /.idea
 /*.cache
-/composer.lock
 /phpunit.xml
 /results.sarif
-/system/config/config.local.php
-/system/cache/*
-!/system/cache/.gitkeep
-/system/log/*
-!/system/log/.gitkeep
-/system/vendor/
+/mobicms/config/config.local.php
+/mobicms/cache/*
+!/mobicms/cache/.gitkeep
+/mobicms/log/*
+!/mobicms/log/.gitkeep
+/mobicms/vendor/
