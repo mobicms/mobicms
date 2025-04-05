@@ -23,12 +23,16 @@ final class HomePageHandler implements RequestHandlerInterface
     private PDO $pdo;
     private Engine $renderer;
 
+    /**
+     * @psalm-suppress PossiblyUnusedMethod
+     */
     public function __construct(Engine $renderer, PDO $pdo)
     {
         $this->renderer = $renderer;
         $this->pdo = $pdo;
     }
 
+    #[\Override]
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         /** @var SessionInterface $session */
@@ -84,7 +88,7 @@ final class HomePageHandler implements RequestHandlerInterface
     }
 
     /**
-     * @return array<string>
+     * @return array<mixed>
      */
     private function checkType(mixed $var): array
     {
