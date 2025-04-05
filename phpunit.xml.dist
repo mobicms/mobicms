@@ -16,7 +16,7 @@
 
     <source>
         <include>
-            <directory>mobicms/src</directory>
+            <directory>mobicms/src/System</directory>
         </include>
     </source>
 </phpunit>

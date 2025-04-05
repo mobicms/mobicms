@@ -8,3 +8,5 @@
 /mobicms/log/*
 !/mobicms/log/.gitkeep
 /mobicms/vendor/
+/clover.xml
+/report.xml
