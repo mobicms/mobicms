@@ -27,9 +27,6 @@
         "allow-plugins": {
             "dealerdirect/phpcodesniffer-composer-installer": true
         },
-        "platform": {
-            "php": "8.2"
-        },
         "classmap-authoritative": true,
         "optimize-autoloader": true,
         "sort-packages": true,
@@ -38,7 +35,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "~8.2 || ~8.3 || ~8.4",
+        "php": "~8.3 || ~8.4",
         "ext-mbstring": "*",
         "ext-pdo": "*",
         "ext-random": "*",
