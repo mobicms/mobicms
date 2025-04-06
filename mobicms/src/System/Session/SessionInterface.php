@@ -6,6 +6,7 @@ namespace Mobicms\System\Session;
 
 /**
  * @version 1.0.0
+ * @psalm-api
  */
 interface SessionInterface
 {
