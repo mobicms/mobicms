@@ -9,6 +9,10 @@ use Mobicms\System\Container\Container;
 use Mobicms\System\Container\Exception\AlreadyExistsException;
 use Mobicms\System\Container\Exception\InvalidAliasException;
 use Mobicms\System\Container\Exception\NotFoundException;
+use MobicmsTest\System\Container\Stubs\FakeClassWithDependencies;
+use MobicmsTest\System\Container\Stubs\FakeClassWithoutConstructor;
+use MobicmsTest\System\Container\Stubs\FakeFactory;
+use MobicmsTest\System\Container\Stubs\FakeInvalidClass;
 use Psr\Container\ContainerInterface;
 
 describe('Configuration:', function () {

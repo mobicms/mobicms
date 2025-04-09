@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MobicmsTest\System\Container;
+namespace MobicmsTest\System\Container\Stubs;
 
 use Psr\Container\ContainerInterface;
 
