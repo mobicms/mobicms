@@ -1,0 +1,33 @@
+services:
+  php-apache:
+    build:
+      context: .
+      dockerfile: .docker/php-apache/Dockerfile
+    ports:
+      - 80:80
+    volumes:
+      # Файл с настройками PHP
+      - ./.docker/php-apache/php.ini:/usr/local/etc/php/php.ini
+      # Файл с настройками виртуального хоста Apache
+      - ./.docker/php-apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      # Основная папка Public HTML
+      - ./:/var/www/html
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+
+  mariadb:
+    image: mariadb:10.11
+    ports:
+      - 3306:3306
+    volumes:
+      - mobicms-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '120963'
+      MYSQL_DATABASE: 'mobicms'
+      MYSQL_USER: 'mobiuser'
+      MYSQL_PASSWORD: '120963'
+    restart: unless-stopped
+
+volumes:
+  mobicms-db:
