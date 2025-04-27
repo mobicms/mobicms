@@ -1,17 +1,23 @@
 services:
   php-apache:
-    build:
-      context: .
-      dockerfile: .docker/php-apache/Dockerfile
+    image: php:8.3-apache
     ports:
       - 80:80
     volumes:
       # Файл с настройками PHP
-      - ./.docker/php-apache/php.ini:/usr/local/etc/php/php.ini
+      - ./.docker/php.ini:/usr/local/etc/php/php.ini
       # Файл с настройками виртуального хоста Apache
-      - ./.docker/php-apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./.docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
       # Основная папка Public HTML
       - ./:/var/www/html
+    command: >
+      bash -c "apt update
+      && apt install -y unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libcurl3-dev libwebp-dev
+      && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
+      && docker-php-ext-install -j$(nproc) gd zip pdo_mysql
+      && docker-php-ext-enable gd zip pdo_mysql
+      && a2enmod rewrite
+      && apache2-foreground"
     restart: unless-stopped
     depends_on:
       - mariadb
@@ -21,7 +27,7 @@ services:
     ports:
       - 3306:3306
     volumes:
-      - mobicms-db:/var/lib/mysql
+      - db:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: '120963'
       MYSQL_DATABASE: 'mobicms'
@@ -30,4 +36,4 @@ services:
     restart: unless-stopped
 
 volumes:
-  mobicms-db:
+  db:
