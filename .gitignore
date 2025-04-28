@@ -2,7 +2,6 @@
 /*.cache
 /phpunit.xml
 /results.sarif
-/mobicms/config/config.local.php
 /mobicms/cache/*
 !/mobicms/cache/.gitkeep
 /mobicms/log/*

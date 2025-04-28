@@ -4,11 +4,8 @@ services:
     ports:
       - 80:80
     volumes:
-      # Файл с настройками PHP
-      - ./.docker/php.ini:/usr/local/etc/php/php.ini
-      # Файл с настройками виртуального хоста Apache
-      - ./.docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
-      # Основная папка Public HTML
+      - ./dev/docker/php.ini:/usr/local/etc/php/php.ini
+      - ./dev/docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
       - ./:/var/www/html
     command: >
       bash -c "apt update
@@ -28,11 +25,12 @@ services:
       - 3306:3306
     volumes:
       - db:/var/lib/mysql
+      - ./dev/data/dump.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
-      MYSQL_ROOT_PASSWORD: '120963'
+      MYSQL_ROOT_PASSWORD: 'root_pass'
       MYSQL_DATABASE: 'mobicms'
       MYSQL_USER: 'mobiuser'
-      MYSQL_PASSWORD: '120963'
+      MYSQL_PASSWORD: 'user_pass'
     restart: unless-stopped
 
 volumes:

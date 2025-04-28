@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 return [
     'database' => [
-        'host'       => 'localhost',
+        'host'       => 'mariadb',
         'port'       => '3306',
         'dbname'     => 'mobicms',
-        'user'       => 'root',
-        'pass'       => '',
+        'user'       => 'mobiuser',
+        'pass'       => 'user_pass',
     ],
 ];
