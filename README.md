@@ -11,33 +11,12 @@ public sites. **LOCAL TEST ONLY!!!**
 [![Sonar Coverage](https://img.shields.io/sonar/coverage/mobicms_mobicms?server=https%3A%2F%2Fsonarcloud.io)](https://sonarcloud.io/code?id=mobicms_mobicms)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobicms_mobicms&metric=alert_status)](https://sonarcloud.io/summary/overall?id=mobicms_mobicms)
 
-## System requirements
-
-Make sure your server meets the following requirements:
-- Apache webserver
-  - [mod_rewrite](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)
-- PHP 8.2 or higher
-  - [gd](https://www.php.net/manual/en/book.image.php)
-  - [mbstring](https://www.php.net/manual/en/book.mbstring.php)
-  - [pdo_mysql](https://www.php.net/manual/en/ref.pdo-mysql.php)
-- MariaDB, MySQL or other compatible database
-  - InnoDB must be enabled
-
-
-## Installation
-**To install the general availability version**, go to the [**project website**][website] and download the latest available distributive.
-Then follow the installation instructions that came with it.
-
-**To install the developer version**, you must have a [Composer](https://getcomposer.org) dependency manager
-and [GIT](https://git-scm.com/) version control system.
-1. Clone or download this repository on local workstation.
-2. Assign the repository folder as Apache virtual host, or move contents to the previously created virtual host folder.
-3. Create MySQL Database.
-4. Import into the created database ALL files that are located in the `/install/sql` folder.
-5. Copy the `/system/config/config.local.php.dist` file to `/system/config/config.local.php`.
-6. Write in the copied file the credentials of access to the database you created.
-7. Open the console in the virtual host folder and install the dependencies using the command `composer install`.
-8. **This is all done**. If you go to the address of your virtual host from the browser, you should see a working site with demo data.
+## Run
+1. Build and run the Docker container:
+```bash
+docker compose up --build -d 
+```
+2. Demo page available at: [http://localhost/](http://localhost/)
 
 ## Contributing
 Contributions are welcome! Please read [CONTRIBUTING][contributing] for details.
