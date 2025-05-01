@@ -12,11 +12,15 @@ public sites. **LOCAL TEST ONLY!!!**
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mobicms_mobicms&metric=alert_status)](https://sonarcloud.io/summary/overall?id=mobicms_mobicms)
 
 ## Run
-1. Build and run the Docker container:
+1. Install all dependencies
+```bash
+composer install 
+```
+2. Build and run the Docker container:
 ```bash
 docker compose up --build -d 
 ```
-2. Demo page available at: [http://localhost/](http://localhost/)
+3. Demo page available at: [http://localhost/](http://localhost/)
 
 ## Contributing
 Contributions are welcome! Please read [CONTRIBUTING][contributing] for details.
