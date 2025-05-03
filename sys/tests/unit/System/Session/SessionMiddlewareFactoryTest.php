@@ -88,7 +88,7 @@ class SessionMiddlewareFactoryTest extends MysqlTestCase
     public function testFactoryReturnsSessionMiddlewareInstance(): void
     {
         $loader = new SqlDumpLoader(self::getPdo());
-        $loader->loadFile('install/sql/mobicms.sql');
+        $loader->loadFile('dev/data/dump.sql');
 
         if ($loader->hasErrors()) {
             self::fail(implode("\n", $loader->getErrors()));

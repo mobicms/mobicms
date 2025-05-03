@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="mobicms/vendor/squizlabs/php_codesniffer/phpcs.xsd">
+         xsi:noNamespaceSchemaLocation="sys/vendor/squizlabs/php_codesniffer/phpcs.xsd">
     <config name="installed_paths" value="../../slevomat/coding-standard"/>
     <arg name="basepath" value="."/>
     <arg name="colors"/>
@@ -11,7 +11,7 @@
     <arg value="p"/>
 
     <!-- Paths to check -->
-    <file>mobicms/src</file>
+    <file>sys/src</file>
 
     <!-- Generic rules -->
     <rule ref="PSR12"/>

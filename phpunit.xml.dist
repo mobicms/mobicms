@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:noNamespaceSchemaLocation="mobicms/vendor/phpunit/phpunit/phpunit.xsd"
-         bootstrap="mobicms/vendor/autoload.php"
+         xsi:noNamespaceSchemaLocation="sys/vendor/phpunit/phpunit/phpunit.xsd"
+         bootstrap="sys/vendor/autoload.php"
          colors="true"
          failOnRisky="true"
          failOnWarning="true"
@@ -10,13 +10,13 @@
 
     <testsuites>
         <testsuite name="default">
-            <directory>mobicms/tests</directory>
+            <directory>sys/tests</directory>
         </testsuite>
     </testsuites>
 
     <source>
         <include>
-            <directory>mobicms/src/System</directory>
+            <directory>sys/src/System</directory>
         </include>
     </source>
 
@@ -24,7 +24,7 @@
         <var name="test_db_host" value="127.0.0.1"/>
         <var name="test_db_port" value="3306"/>
         <var name="test_db_user" value="root"/>
-        <var name="test_db_pass" value="root"/>
+        <var name="test_db_pass" value="root_pass"/>
         <var name="test_db_name" value="tmp_test_database"/>
     </php>
 </phpunit>

@@ -2,10 +2,10 @@
 /*.cache
 /phpunit.xml
 /results.sarif
-/mobicms/cache/*
-!/mobicms/cache/.gitkeep
-/mobicms/log/*
-!/mobicms/log/.gitkeep
-/mobicms/vendor/
+/sys/cache/*
+!/sys/cache/.gitkeep
+/sys/log/*
+!/sys/log/.gitkeep
+/sys/vendor/
 /clover.xml
 /report.xml

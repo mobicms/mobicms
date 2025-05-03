@@ -6,7 +6,8 @@ services:
     volumes:
       - ./dev/docker/php.ini:/usr/local/etc/php/php.ini
       - ./dev/docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
-      - ./:/var/www/html
+      - ./pub:/var/www/html
+      - ./sys:/var/www/sys
     command: >
       bash -c "apt update
       && apt install -y unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libcurl3-dev libwebp-dev
