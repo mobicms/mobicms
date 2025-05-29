@@ -6,7 +6,7 @@ services:
     volumes:
       - ./dev/docker/php.ini:/usr/local/etc/php/php.ini
       - ./dev/docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
-      - ./pub:/var/www/html
+      - ./www:/var/www/html
       - ./sys:/var/www/sys
     command: >
       bash -c "apt update
