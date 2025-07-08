@@ -7,7 +7,7 @@ return [
         'host'       => 'mariadb',
         'port'       => '3306',
         'dbname'     => 'mobicms',
-        'user'       => 'mobiuser',
-        'pass'       => 'user_pass',
+        'user'       => 'root',
+        'pass'       => 'root',
     ],
 ];

@@ -1,8 +1,9 @@
 services:
   php-apache:
     image: php:8.3-apache
+    restart: unless-stopped
     ports:
-      - 80:80
+      - "80:80"
     volumes:
       - ./.dev/docker/php.ini:/usr/local/etc/php/php.ini
       - ./.dev/docker/vhost.conf:/etc/apache2/sites-available/000-default.conf
@@ -16,23 +17,21 @@ services:
       && docker-php-ext-enable gd zip pdo_mysql
       && a2enmod rewrite
       && apache2-foreground"
-    restart: unless-stopped
     depends_on:
       - mariadb
 
   mariadb:
     image: mariadb:lts
+    restart: unless-stopped
     ports:
-      - 3306:3306
+      - "3306:3306"
     volumes:
       - db:/var/lib/mysql
       - ./.dev/data/dump.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'mobicms'
-      MYSQL_USER: 'mobiuser'
-      MYSQL_PASSWORD: 'user_pass'
-    restart: unless-stopped
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
   db:
