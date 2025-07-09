@@ -8,7 +8,7 @@ use HttpSoft\ServerRequest\ServerRequestCreator;
 define('START_MEMORY', memory_get_usage());
 define('START_TIME', microtime(true));
 
-chdir('../sys');
+chdir('../system');
 require 'vendor/autoload.php';
 
 (function () {

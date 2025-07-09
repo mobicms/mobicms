@@ -29,7 +29,7 @@
             "pestphp/pest-plugin": true
         },
         "sort-packages": true,
-        "vendor-dir": "sys/vendor"
+        "vendor-dir": "system/vendor"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
@@ -52,12 +52,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Mobicms\\": "sys/src/"
+            "Mobicms\\": "system/src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "MobicmsTest\\": "sys/tests/unit/"
+            "MobicmsTest\\": "system/tests/unit/"
         }
     },
     "scripts": {

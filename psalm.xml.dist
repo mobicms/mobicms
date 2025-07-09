@@ -2,13 +2,13 @@
 <psalm
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="https://getpsalm.org/schema/config"
-        xsi:schemaLocation="https://getpsalm.org/schema/config sys/vendor/vimeo/psalm/config.xsd"
+        xsi:schemaLocation="https://getpsalm.org/schema/config system/vendor/vimeo/psalm/config.xsd"
         findUnusedPsalmSuppress="true"
         findUnusedVariablesAndParams="true"
         errorLevel="1">
 
     <projectFiles>
-        <directory name="sys/src"/>
-        <directory name="sys/config"/>
+        <directory name="system/src"/>
+        <directory name="system/config"/>
     </projectFiles>
 </psalm>
