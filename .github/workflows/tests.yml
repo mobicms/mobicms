@@ -65,8 +65,8 @@ jobs:
             -Dsonar.organization=mobicms
             -Dsonar.projectName=mobicms
             -Dsonar.projectKey=mobicms_mobicms
-            -Dsonar.sources=./sys/src/System
-            -Dsonar.tests=./sys/tests
+            -Dsonar.sources=./system/src/System
+            -Dsonar.tests=./system/tests
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.php.tests.reportPath=report.xml
             -Dsonar.php.coverage.reportPaths=clover.xml
