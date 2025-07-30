@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "dfaf88c0519a64d3dd659425c2090047",
+    "content-hash": "1d32c7e3b37dafea47abad7b4136c8d3",
     "packages": [
         {
             "name": "filp/whoops",
@@ -668,6 +668,66 @@
                 "source": "https://github.com/httpsoft/http-server-request"
             },
             "time": "2024-11-25T06:32:39+00:00"
+        },
+        {
+            "name": "mobicms/container",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mobicms/container.git",
+                "reference": "25b7bb4b4c9f25d4f2894fc61affd2a9fe8f5cff"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mobicms/container/zipball/25b7bb4b4c9f25d4f2894fc61affd2a9fe8f5cff",
+                "reference": "25b7bb4b4c9f25d4f2894fc61affd2a9fe8f5cff",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~8.2 || ~8.3 || ~8.4",
+                "psr/container": "^1.1 || ^2.0"
+            },
+            "require-dev": {
+                "pestphp/pest": "^3.8",
+                "slevomat/coding-standard": "^8.20",
+                "squizlabs/php_codesniffer": "^3.13",
+                "vimeo/psalm": "^6.13"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Mobicms\\Container\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-only"
+            ],
+            "authors": [
+                {
+                    "name": "Oleg Kasyanov",
+                    "email": "oleg@batumi.org",
+                    "homepage": "https://github.com/batumibiz",
+                    "role": "Team Lead, Developer"
+                },
+                {
+                    "name": "mobiCMS Contributors",
+                    "homepage": "https://github.com/mobicms/container/graphs/contributors"
+                }
+            ],
+            "description": "PSR-11 dependency injection container",
+            "homepage": "https://mobicms.org",
+            "keywords": [
+                "PSR-11",
+                "container",
+                "mobicms"
+            ],
+            "support": {
+                "issues": "https://github.com/mobicms/container/issues",
+                "source": "https://github.com/mobicms/container"
+            },
+            "time": "2025-07-30T08:54:05+00:00"
         },
         {
             "name": "mobicms/render",
@@ -7017,6 +7077,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "mobicms/container": 20,
         "mobicms/render": 20
     },
     "prefer-stable": true,

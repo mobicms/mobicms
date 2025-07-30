@@ -14,7 +14,7 @@ use HttpSoft\Runner\MiddlewarePipeline;
 use HttpSoft\Runner\MiddlewarePipelineInterface;
 use HttpSoft\Runner\MiddlewareResolver;
 use HttpSoft\Runner\MiddlewareResolverInterface;
-use Mobicms\System\Container\Container;
+use Mobicms\Container\Container;
 use Mobicms\Render\Engine;
 use Mobicms\System\App\ApplicationFactory;
 use Mobicms\System\Config\ConfigContainer;
