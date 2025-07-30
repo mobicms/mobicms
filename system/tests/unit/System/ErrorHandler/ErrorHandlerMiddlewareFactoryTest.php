@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace MobicmsTest\System\ErrorHandler;
 
-use Mobicms\System\Container\Container;
-use Mobicms\System\Container\Exception\NotFoundException;
+use Mobicms\Container\Container;
+use Mobicms\Container\Exception\NotFoundException;
 use Mobicms\System\ErrorHandler\ErrorHandlerMiddlewareFactory;
 use Mobicms\System\Config\ConfigInterface;
 use Mobicms\System\Log\LoggerFactory;
