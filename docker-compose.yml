@@ -18,15 +18,15 @@ services:
       && a2enmod rewrite
       && apache2-foreground"
     depends_on:
-      - mariadb
+      - db
 
-  mariadb:
+  db:
     image: mariadb:lts
     restart: unless-stopped
     ports:
       - "3306:3306"
     volumes:
-      - db:/var/lib/mysql
+      - db-data:/var/lib/mysql
       - ./docker/db/dump.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
@@ -34,4 +34,4 @@ services:
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
-  db:
+  db-data:
