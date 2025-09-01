@@ -5,8 +5,8 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./.docker/apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
       - ./www:/var/www/html
       - ./system:/var/www/system
     command: >
@@ -27,7 +27,7 @@ services:
       - "3306:3306"
     volumes:
       - db:/var/lib/mysql
-      - ./.docker/data/dump.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./docker/db/dump.sql:/docker-entrypoint-initdb.d/init.sql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'mobicms'

@@ -88,7 +88,7 @@ class SessionMiddlewareFactoryTest extends MysqlTestCase
     public function testFactoryReturnsSessionMiddlewareInstance(): void
     {
         $loader = new SqlDumpLoader(self::getPdo());
-        $loader->loadFile('.docker/data/dump.sql');
+        $loader->loadFile('docker/db/dump.sql');
 
         if ($loader->hasErrors()) {
             self::fail(implode("\n", $loader->getErrors()));
