@@ -1,24 +1,36 @@
+name: mobicms
+
 services:
-  php-apache:
-    image: php:8.3-apache
+  apache:
+    build:
+      context: ./docker/apache
     restart: unless-stopped
     ports:
       - "80:80"
+      - "443:443"
     volumes:
-      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
-      - ./docker/apache/vhost.conf:/etc/apache2/sites-available/000-default.conf
       - ./www:/var/www/html
       - ./system:/var/www/system
-    command: >
-      bash -c "apt update
-      && apt install -y unzip libfreetype6-dev libjpeg62-turbo-dev libpng-dev libzip-dev libcurl3-dev libwebp-dev
-      && docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp
-      && docker-php-ext-install -j$(nproc) gd zip pdo_mysql
-      && docker-php-ext-enable gd zip pdo_mysql
-      && a2enmod rewrite
-      && apache2-foreground"
     depends_on:
+      - php
       - db
+
+  php:
+    build:
+      context: ./docker/php
+    restart: unless-stopped
+    volumes:
+      - ./www:/var/www/html:cached
+      - ./system:/var/www/system:cached
+    environment:
+      USER_ID: ${USER_ID:-1000}
+      GROUP_ID: ${GROUP_ID:-1000}
+
+  mail:
+    image: mailhog/mailhog
+    restart: unless-stopped
+    ports:
+      - "8025:8025"
 
   db:
     image: mariadb:lts
