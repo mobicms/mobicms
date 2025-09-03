@@ -4,6 +4,8 @@
 /phpunit.xml
 /report.xml
 /results.sarif
+/docker/apache/ssl/localhost.crt
+/docker/apache/ssl/localhost.key
 /system/cache/*
 !/system/cache/.gitkeep
 /system/log/*
