@@ -11,4 +11,16 @@
         <directory name="system/src"/>
         <directory name="system/config"/>
     </projectFiles>
+
+    <forbiddenFunctions>
+        <function name="sizeof"/>
+        <function name="delete"/>
+        <function name="print"/>
+        <function name="is_null"/>
+        <function name="create_function"/>
+    </forbiddenFunctions>
+
+    <forbiddenConstants>
+        <constant name="GLOB_BRACE"/>
+    </forbiddenConstants>
 </psalm>
