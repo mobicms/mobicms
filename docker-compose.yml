@@ -27,7 +27,7 @@ services:
       GROUP_ID: ${GROUP_ID:-1000}
 
   mail:
-    image: mailhog/mailhog
+    image: axllent/mailpit
     restart: unless-stopped
     ports:
       - "8025:8025"
