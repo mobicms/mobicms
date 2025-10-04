@@ -7,7 +7,7 @@ namespace MobicmsTest\System\Session;
 use HttpSoft\Cookie\CookieManagerInterface;
 use HttpSoft\Message\Response;
 use Mobicms\System\Session\SessionHandler;
-use Mobicms\System\Session\SessionInterface;
+use Mobicms\Contract\SessionInterface;
 use Mobicms\Testutils\MysqlTestCase;
 use Mobicms\Testutils\SqlDumpLoader;
 use Psr\Http\Message\ServerRequestInterface;

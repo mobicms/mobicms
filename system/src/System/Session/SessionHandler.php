@@ -6,6 +6,7 @@ namespace Mobicms\System\Session;
 
 use HttpSoft\Cookie\Cookie;
 use HttpSoft\Cookie\CookieManagerInterface;
+use Mobicms\Contract\SessionInterface;
 use PDO;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
