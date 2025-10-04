@@ -10,7 +10,7 @@ use HttpSoft\Router\RouteCollector;
 use HttpSoft\Runner\MiddlewarePipelineInterface;
 use HttpSoft\Runner\MiddlewareResolverInterface;
 use Mobicms\System\ErrorHandler\NotFoundHandler;
-use Mobicms\System\Config\ConfigInterface;
+use Mobicms\Contract\ConfigInterface;
 use Mobicms\Render\Engine;
 use Psr\Container\ContainerInterface;
 use Psr\Http\Message\ResponseFactoryInterface;

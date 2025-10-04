@@ -14,7 +14,7 @@ use HttpSoft\Runner\MiddlewareResolver;
 use HttpSoft\Runner\MiddlewareResolverInterface;
 use Mobicms\System\App\ApplicationFactory;
 use Mobicms\Container\Container;
-use Mobicms\System\Config\ConfigInterface;
+use Mobicms\Contract\ConfigInterface;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 use Psr\Http\Message\ResponseFactoryInterface;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Mobicms\System\View;
 
-use Mobicms\System\Config\ConfigInterface;
+use Mobicms\Contract\ConfigInterface;
 use Mobicms\Render\Engine;
 use Psr\Container\ContainerInterface;
 

@@ -7,7 +7,7 @@ namespace MobicmsTest\System\ErrorHandler;
 use Mobicms\Container\Container;
 use Mobicms\Container\Exception\NotFoundException;
 use Mobicms\System\ErrorHandler\ErrorHandlerMiddlewareFactory;
-use Mobicms\System\Config\ConfigInterface;
+use Mobicms\Contract\ConfigInterface;
 use Mobicms\System\Log\LoggerFactory;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;

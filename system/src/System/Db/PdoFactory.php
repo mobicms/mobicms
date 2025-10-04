@@ -7,7 +7,7 @@ namespace Mobicms\System\Db;
 use Mobicms\System\Db\Exception\CommonException;
 use Mobicms\System\Db\Exception\InvalidDatabaseException;
 use Mobicms\System\Db\Exception\InvalidCredentialsException;
-use Mobicms\System\Config\ConfigInterface;
+use Mobicms\Contract\ConfigInterface;
 use PDO;
 use PDOException;
 use Psr\Container\ContainerInterface;

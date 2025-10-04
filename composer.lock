@@ -735,12 +735,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mobicms/contract.git",
-                "reference": "2bd24e3fec3e8561691c902140e6bed07188ff85"
+                "reference": "36dc578a7419f38074d1b827332e4780a28ac79c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mobicms/contract/zipball/2bd24e3fec3e8561691c902140e6bed07188ff85",
-                "reference": "2bd24e3fec3e8561691c902140e6bed07188ff85",
+                "url": "https://api.github.com/repos/mobicms/contract/zipball/36dc578a7419f38074d1b827332e4780a28ac79c",
+                "reference": "36dc578a7419f38074d1b827332e4780a28ac79c",
                 "shasum": ""
             },
             "require": {
@@ -779,7 +779,7 @@
                 "issues": "https://github.com/mobicms/contract/issues",
                 "source": "https://github.com/mobicms/contract/tree/main"
             },
-            "time": "2025-10-08T21:10:35+00:00"
+            "time": "2025-10-08T21:23:15+00:00"
         },
         {
             "name": "mobicms/render",
