@@ -42,6 +42,7 @@
         "mobicms/container": "dev-main",
         "mobicms/contract": "dev-main",
         "mobicms/render": "dev-main",
+        "mobicms/system": "dev-main",
         "monolog/monolog": "^3.9",
         "psr/container": "^2.0"
     },
