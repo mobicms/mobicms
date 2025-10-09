@@ -1,4 +1,4 @@
-FROM php:8.3-fpm-alpine3.22
+FROM php:8.4-fpm-alpine3.22
 
 # Получаем USER_ID и GROUP_ID из docker compose
 ARG USER_ID=1000
