@@ -1,27 +1,27 @@
-name: mobicms
-
 services:
   apache:
     build:
-      context: ./docker/apache
+      context: ./.docker/apache
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./www:/var/www/html
-      - ./system:/var/www/system
+      - ./www:/app/www
+      - ./system:/app/system
+      #- ./.docker/apache/logs:/app/logs/apache
     depends_on:
       - php
-      - db
+      - mysql
 
   php:
     build:
-      context: ./docker/php
+      context: ./.docker/php
     restart: unless-stopped
     volumes:
-      - ./www:/var/www/html:cached
-      - ./system:/var/www/system:cached
+      - ./www:/app/www:cached
+      - ./system:/app/system:cached
+      - ./.docker/php/logs:/app/logs/php
     environment:
       USER_ID: ${USER_ID:-1000}
       GROUP_ID: ${GROUP_ID:-1000}
@@ -32,18 +32,20 @@ services:
     ports:
       - "8025:8025"
 
-  db:
+  mysql:
     image: mariadb:lts
     restart: unless-stopped
     ports:
       - "3306:3306"
     volumes:
-      - db-data:/var/lib/mysql
-      - ./docker/db/dump.sql:/docker-entrypoint-initdb.d/init.sql
+      - mysql-data:/var/lib/mysql
+      - ./.docker/mysql/dump:/docker-entrypoint-initdb.d
+      #- ./.docker/mysql/config:/etc/mysql/conf.d
+      #- ./.docker/mysql/logs:/var/log/mysql
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'mobicms'
     command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 volumes:
-  db-data:
+  mysql-data:
