@@ -10,8 +10,6 @@
 !/.docker/apache/logs/README.md
 /.docker/php/logs/*
 !/.docker/php/logs/README.md
-/.docker/mysql/dump/*
-!/.docker/mysql/dump/README.md
 /.docker/mysql/logs/*
 !/.docker/mysql/logs/README.md
 
