@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ed0ea12849226d60eb0cd4c6e29b96d1",
+    "content-hash": "d97bcdfbbfa222b2e5ad11bfd5efc4cd",
     "packages": [
         {
             "name": "filp/whoops",
@@ -838,10 +838,16 @@
         {
             "name": "mobicms/system",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mobicms/system.git",
+                "reference": "ff1785cd05dc53dde7013d462f6cbc0b8b416f22"
+            },
             "dist": {
-                "type": "path",
-                "url": "../system",
-                "reference": "4522bf54f73204f037b86bb8529d4d0d1ece7248"
+                "type": "zip",
+                "url": "https://api.github.com/repos/mobicms/system/zipball/ff1785cd05dc53dde7013d462f6cbc0b8b416f22",
+                "reference": "ff1785cd05dc53dde7013d462f6cbc0b8b416f22",
+                "shasum": ""
             },
             "require": {
                 "ext-pdo": "*",
@@ -857,49 +863,23 @@
                 "squizlabs/php_codesniffer": "^3.13",
                 "vimeo/psalm": "^6.13"
             },
+            "default-branch": true,
             "type": "library",
             "autoload": {
                 "psr-4": {
                     "Mobicms\\System\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "MobicmsTest\\": "tests/unit/"
-                }
-            },
-            "scripts": {
-                "check": [
-                    "@cs-check",
-                    "@static-analysis",
-                    "@test"
-                ],
-                "cs-check": [
-                    "phpcs"
-                ],
-                "cs-fix": [
-                    "phpcbf"
-                ],
-                "static-analysis": [
-                    "psalm --no-diff --show-info=true"
-                ],
-                "test": [
-                    "phpunit --colors=always"
-                ],
-                "test-coverage": [
-                    "@putenv XDEBUG_MODE=coverage",
-                    "phpunit --colors=always --coverage-clover clover.xml --log-junit report.xml"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-3.0-only"
             ],
             "authors": [
                 {
                     "name": "Oleg Kasyanov",
-                    "role": "Team Lead, Developer",
+                    "email": "oleg@batumi.org",
                     "homepage": "https://github.com/batumibiz",
-                    "email": "oleg@batumi.org"
+                    "role": "Team Lead, Developer"
                 },
                 {
                     "name": "mobiCMS Contributors",
@@ -912,13 +892,10 @@
                 "mobicms"
             ],
             "support": {
-                "source": "https://github.com/mobicms/system",
-                "issues": "https://github.com/mobicms/system/issues"
+                "issues": "https://github.com/mobicms/system/issues",
+                "source": "https://github.com/mobicms/system"
             },
-            "transport-options": {
-                "symlink": false,
-                "relative": true
-            }
+            "time": "2025-10-25T09:36:33+00:00"
         },
         {
             "name": "monolog/monolog",
