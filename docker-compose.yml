@@ -1,30 +1,27 @@
 services:
-  apache:
+  web:
     build:
-      context: ./.docker/apache
+      context: .docker/web
+      args:
+        PHP: ${PHP:-84}
+        USER_ID: ${USER_ID:-1000}
+        GROUP_ID: ${GROUP_ID:-1000}
+    container_name: apache-ssl-php${PHP:-84}
     restart: unless-stopped
+    user: "${USER_ID:-1000}:${GROUP_ID:-1000}"
     ports:
       - "80:80"
       - "443:443"
     volumes:
-      - ./www:/app/www
-      - ./system:/app/system
-      #- ./.docker/apache/logs:/app/logs/apache
-    depends_on:
-      - php
-      - mysql
-
-  php:
-    build:
-      context: ./.docker/php
-    restart: unless-stopped
-    volumes:
-      - ./www:/app/www:cached
-      - ./system:/app/system:cached
-      - ./.docker/php/logs:/app/logs/php
+      # Web root and PHP scripts
+      - .:/app/www
+      # Log files
+      - ./.docker/log:/var/log/apache2
+      - ./.docker/log:/var/log/php84
     environment:
-      USER_ID: ${USER_ID:-1000}
-      GROUP_ID: ${GROUP_ID:-1000}
+      TZ: Europe/Tbilisi
+    depends_on:
+      - mysql
 
   mail:
     image: axllent/mailpit
@@ -39,9 +36,8 @@ services:
       - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
-      - ./.docker/mysql/dump:/docker-entrypoint-initdb.d
-      #- ./.docker/mysql/config:/etc/mysql/conf.d
-      #- ./.docker/mysql/logs:/var/log/mysql
+      # Импорт дампа данных (если есть) при инициализации контейнера.
+      - ./.docker/db-import:/docker-entrypoint-initdb.d
     environment:
       MYSQL_ROOT_PASSWORD: 'root'
       MYSQL_DATABASE: 'mobicms'
