@@ -9,8 +9,8 @@
 /.docker/log/*
 !/.docker/log/.gitkeep
 
-/system/cache/*
-!/system/cache/.gitkeep
-/system/log/*
-!/system/log/.gitkeep
-/system/vendor/
+/storage/cache/*
+!/storage/cache/.gitkeep
+/storage/log/*
+!/storage/log/.gitkeep
+/vendor/

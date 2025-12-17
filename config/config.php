@@ -5,7 +5,7 @@ declare(strict_types=1);
 $configGlobal = [
     // Common settings
     'debug'     => true,
-    'log_file'  => 'log/app.log',
+    'log_file'  => 'storage/log/app.log',
 
     // Session
     'session'   => [
@@ -15,16 +15,16 @@ $configGlobal = [
         'cookie_secure'     => false,
         'cookie_http_only'  => true,
         'lifetime'          => 10800,
-        'gc_timestamp_file' => 'cache/session_gc.timestamp',
+        'gc_timestamp_file' => 'storage/cache/session_gc.timestamp',
         'gc_period'         => 3600,
     ],
 
     // General templates settings
     'templates' => [
         'paths' => [
-            'app'     => ['templates/app'],
-            'error'   => ['templates/error'],
-            'layouts' => ['templates/layouts'],
+            'app'     => ['system/templates/app'],
+            'error'   => ['system/templates/error'],
+            'layouts' => ['system/templates/layouts'],
         ],
     ],
 ];
