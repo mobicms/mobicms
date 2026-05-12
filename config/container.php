@@ -38,16 +38,16 @@ $container = new Container(
         'factories' =>
             [
                 Application::class                 => ApplicationFactory::class,
-                CookieManagerInterface::class      => fn() => new CookieManager(),
-                EmitterInterface::class            => fn() => new SapiEmitter(),
+                CookieManagerInterface::class      => fn () => new CookieManager(),
+                EmitterInterface::class            => fn () => new SapiEmitter(),
                 Engine::class                      => EngineFactory::class,
                 ErrorHandlerMiddleware::class      => ErrorHandlerMiddlewareFactory::class,
                 LoggerInterface::class             => LoggerFactory::class,
-                MiddlewarePipelineInterface::class => fn() => new MiddlewarePipeline(),
-                MiddlewareResolverInterface::class => fn(ContainerInterface $c) => new MiddlewareResolver($c),
+                MiddlewarePipelineInterface::class => fn () => new MiddlewarePipeline(),
+                MiddlewareResolverInterface::class => fn (ContainerInterface $c) => new MiddlewareResolver($c),
                 PDO::class                         => PdoFactory::class,
-                ResponseFactoryInterface::class    => fn() => new CustomResponseFactory(),
-                RouteCollector::class              => fn() => new RouteCollector(),
+                ResponseFactoryInterface::class    => fn () => new CustomResponseFactory(),
+                RouteCollector::class              => fn () => new RouteCollector(),
                 SessionMiddleware::class           => SessionMiddlewareFactory::class,
             ],
     ]

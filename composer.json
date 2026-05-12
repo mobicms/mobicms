@@ -24,10 +24,6 @@
         "issues": "https://github.com/mobicms/mobicms/issues"
     },
     "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "pestphp/pest-plugin": true
-        },
         "sort-packages": true
     },
     "minimum-stability": "dev",
@@ -41,9 +37,8 @@
         "psr/container": "^2.0"
     },
     "require-dev": {
-        "slevomat/coding-standard": "^8.22",
-        "squizlabs/php_codesniffer": "^3.13",
-        "vimeo/psalm": "^6.14"
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "vimeo/psalm": "^6.16"
     },
     "autoload": {
         "psr-4": {
@@ -55,8 +50,8 @@
             "@cs-check",
             "@static-analysis"
         ],
-        "cs-check": "phpcs",
-        "cs-fix": "phpcbf",
+        "cs-check": "php-cs-fixer check",
+        "cs-fix": "php-cs-fixer fix",
         "static-analysis": "psalm --no-diff --show-info=true"
     }
 }
